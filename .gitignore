@@ -60,3 +60,6 @@ crashlytics-build.properties
 
 .DS_Store
 *.meta
+.idea/.idea.Yet-another-Final-Project/.idea/misc.xml
+.idea/.idea.Yet-another-Final-Project/.idea/encodings.xml
+*.iml

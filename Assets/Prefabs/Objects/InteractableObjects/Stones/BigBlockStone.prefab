@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6912603438962172570}
   - component: {fileID: 3767194842210911453}
-  - component: {fileID: -3462432039212379728}
+  - component: {fileID: 3686944487822069306}
   m_Layer: 0
-  m_Name: BlockStone
+  m_Name: BigBlockStone
   m_TagString: ScreenBorder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-3462432039212379728
+--- !u!114 &3686944487822069306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5192247610399457930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa1e6ac0e3c8e4213ac46a8f67e61700, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d6db504e35374fdf899c1b17680bc6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6266827727718993482

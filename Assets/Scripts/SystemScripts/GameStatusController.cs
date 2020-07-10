@@ -20,6 +20,8 @@ namespace SystemScripts
         public static int Live;
         public static int CurrentLevel;
         public static bool IsDead;
+        public static bool IsGameOver;
+        public static bool IsBigPlayer;
         private float _second;
 
         private void Awake()
@@ -33,6 +35,10 @@ namespace SystemScripts
 
         private void Update()
         {
+            if (Live < 0)
+            {
+                IsGameOver = true;
+            }
             SetCoin();
             SetLevel();
             SetScore();

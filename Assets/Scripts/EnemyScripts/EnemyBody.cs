@@ -8,7 +8,7 @@ namespace EnemyScripts
     {
         private PlayerController _playerController;
         private GoombaController _goombaController;
-    
+
         public GameObject goomba;
 
         private void Awake()
@@ -36,8 +36,11 @@ namespace EnemyScripts
             }
             else if (other.gameObject.CompareTag("BigPlayer"))
             {
+                _playerController.gameObject.tag = "Player";
+                GameStatusController.IsBigPlayer = false;
+                _playerController.ChangeAnim();
                 // StartCoroutine(Die(other.gameObject));
-                _playerController.isDead = true;
+                // _playerController.isDead = true;
             }
         }
 

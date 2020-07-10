@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
+﻿using System.Collections;
 using SystemScripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -61,6 +58,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (!isDead && !_isFinish)
         {
+            _playerAnim.SetBool(BigB, GameStatusController.IsBigPlayer);
             MovePlayer();
             GetPlayerSpeed();
         }
@@ -131,23 +129,9 @@ public class PlayerController : MonoBehaviour
         transform.localScale = localScale;
     }
 
-    void Die()
-    {
-        _playerAnim.SetBool(DieB, isDead);
-        GameStatusController.IsDead = true;
-        // _playerRb.velocity = Vector2.zero;
-        StartCoroutine(DieAnim());
-        StartCoroutine(LoadingScene());
-    }
-
-    void GetPlayerSpeed()
-    {
-        _playerAnim.SetFloat(SpeedF, Mathf.Abs(_playerRb.velocity.x));
-    }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
-        // Debug.Log(other.gameObject.tag);
+        Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Pipe") ||
             other.gameObject.CompareTag("Brick") ||
             other.gameObject.CompareTag("Stone"))
@@ -183,11 +167,30 @@ public class PlayerController : MonoBehaviour
 
         if (!other.gameObject.CompareTag("BigMushroom") || !_isEatable) return;
         tag = "BigPlayer";
-        _playerAnim.SetBool(BigB, true);
-        bigPlayer.SetActive(true);
-        bigPlayerCollider.SetActive(true);
-        smallPlayer.SetActive(false);
-        smallPlayerCollider.SetActive(false);
+        GameStatusController.IsBigPlayer = true;
+        ChangeAnim();
+    }
+
+    private void Die()
+    {
+        _playerAnim.SetBool(DieB, isDead);
+        GameStatusController.IsDead = true;
+        // _playerRb.velocity = Vector2.zero;
+        StartCoroutine(DieAnim());
+        StartCoroutine(LoadingScene());
+    }
+
+    private void GetPlayerSpeed()
+    {
+        _playerAnim.SetFloat(SpeedF, Mathf.Abs(_playerRb.velocity.x));
+    }
+
+    public void ChangeAnim()
+    {
+        bigPlayer.SetActive(GameStatusController.IsBigPlayer);
+        bigPlayerCollider.SetActive(GameStatusController.IsBigPlayer);
+        smallPlayer.SetActive(!GameStatusController.IsBigPlayer);
+        smallPlayerCollider.SetActive(!GameStatusController.IsBigPlayer);
     }
 
     private IEnumerator SetBoolEatable()

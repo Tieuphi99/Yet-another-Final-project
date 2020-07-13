@@ -8,6 +8,7 @@ namespace SystemScripts
         {
             if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BigPlayer"))
             {
+                GameStatusController.Live -= 1;
                 other.gameObject.GetComponent<PlayerController>().isDead = true;
             }
             else

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CoinBrickAfterHit
+  m_Name: DarkCoinBrickAfterHit
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -151,16 +151,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 4210305635217951160, guid: f03ebb725c6ba4cc8864aaf424ef8727,
+      value: {fileID: -997383234116166114, guid: f03ebb725c6ba4cc8864aaf424ef8727,
         type: 3}
     - time: 0.016666668
-      value: {fileID: 4210305635217951160, guid: f03ebb725c6ba4cc8864aaf424ef8727,
+      value: {fileID: -997383234116166114, guid: f03ebb725c6ba4cc8864aaf424ef8727,
         type: 3}
     - time: 0.033333335
-      value: {fileID: 4210305635217951160, guid: f03ebb725c6ba4cc8864aaf424ef8727,
+      value: {fileID: -997383234116166114, guid: f03ebb725c6ba4cc8864aaf424ef8727,
         type: 3}
     - time: 0.05
-      value: {fileID: 4210305635217951160, guid: f03ebb725c6ba4cc8864aaf424ef8727,
+      value: {fileID: -997383234116166114, guid: f03ebb725c6ba4cc8864aaf424ef8727,
         type: 3}
     attribute: m_Sprite
     path: Animations
@@ -222,10 +222,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 4210305635217951160, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}
-    - {fileID: 4210305635217951160, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}
-    - {fileID: 4210305635217951160, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}
-    - {fileID: 4210305635217951160, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}
+    - {fileID: -997383234116166114, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}
+    - {fileID: -997383234116166114, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}
+    - {fileID: -997383234116166114, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}
+    - {fileID: -997383234116166114, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}
     - {fileID: -6989488902003134825, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}
     - {fileID: -9131867936041140510, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}
     - {fileID: 6261110269357047246, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}

@@ -36,8 +36,9 @@ namespace EnemyScripts
             }
             else if (other.gameObject.CompareTag("BigPlayer"))
             {
-                _playerController.gameObject.tag = "Player";
                 GameStatusController.IsBigPlayer = false;
+                GameStatusController.PlayerTag = "Player"; 
+                _playerController.gameObject.tag = GameStatusController.PlayerTag;
                 _playerController.ChangeAnim();
                 // StartCoroutine(Die(other.gameObject));
                 // _playerController.isDead = true;

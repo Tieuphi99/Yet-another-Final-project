@@ -41,6 +41,11 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        if (GameStatusController.PlayerTag != null)
+        {
+            tag = GameStatusController.PlayerTag;
+        }
+
         _velocity = Vector3.zero;
         _playerAnim = GetComponent<Animator>();
         _playerRb = GetComponent<Rigidbody2D>();
@@ -59,6 +64,7 @@ public class PlayerController : MonoBehaviour
         else if (!isDead && !_isFinish)
         {
             _playerAnim.SetBool(BigB, GameStatusController.IsBigPlayer);
+            ChangeAnim();
             MovePlayer();
             GetPlayerSpeed();
         }
@@ -166,7 +172,8 @@ public class PlayerController : MonoBehaviour
         }
 
         if (!other.gameObject.CompareTag("BigMushroom") || !_isEatable) return;
-        tag = "BigPlayer";
+        GameStatusController.PlayerTag = "BigPlayer";
+        tag = GameStatusController.PlayerTag;
         GameStatusController.IsBigPlayer = true;
         ChangeAnim();
     }

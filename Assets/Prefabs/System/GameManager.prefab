@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1085805703535972920}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Brick
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,38 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   gameStatusController: {fileID: 0}
-  goombaControllers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  goombaGameObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  goombaControllers: []
+  goombaGameObjects: []
   invisibleBrick: {fileID: 0}
   invisiblePowerUp: {fileID: 0}
   time: 400
@@ -122,7 +92,7 @@ GameObject:
   - component: {fileID: 1085805703936703712}
   m_Layer: 0
   m_Name: LimitBelow
-  m_TagString: Untagged
+  m_TagString: DeathAbyss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

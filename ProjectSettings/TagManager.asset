@@ -22,6 +22,7 @@ TagManager:
   - Pole
   - Stand
   - Castle
+  - DeathAbyss
   layers:
   - Default
   - TransparentFX

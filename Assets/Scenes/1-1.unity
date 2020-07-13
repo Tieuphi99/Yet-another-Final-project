@@ -629,7 +629,7 @@ PrefabInstance:
     - target: {fileID: 140782559582041886, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
       propertyPath: m_GravityScale
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 140782559582041889, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
@@ -1204,7 +1204,7 @@ PrefabInstance:
     - target: {fileID: 140782559582041886, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
       propertyPath: m_GravityScale
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 140782559582041889, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
@@ -1383,7 +1383,7 @@ PrefabInstance:
     - target: {fileID: 140782559582041886, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
       propertyPath: m_GravityScale
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 140782559582041889, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
@@ -3122,12 +3122,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca18e52709dd3420da717a92457f6d69, type: 3}
---- !u!1 &331629093 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 140782559582041889, guid: c8142232694ad4220ae54ca4bbc27a64,
-    type: 3}
-  m_PrefabInstance: {fileID: 1401915126}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &331629094 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 140782559582041885, guid: c8142232694ad4220ae54ca4bbc27a64,
@@ -3140,7 +3134,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1401915126}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331629093}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d70aef29bf8b4fc69dd91cb13bb48d9, type: 3}
@@ -3703,7 +3697,7 @@ PrefabInstance:
     - target: {fileID: 140782559582041886, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
       propertyPath: m_GravityScale
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 140782559582041889, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
@@ -4795,7 +4789,7 @@ PrefabInstance:
     - target: {fileID: 140782559582041886, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
       propertyPath: m_GravityScale
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 140782559582041889, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
@@ -6100,7 +6094,7 @@ PrefabInstance:
     - target: {fileID: 140782559582041886, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
       propertyPath: m_GravityScale
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 140782559582041889, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
@@ -6504,7 +6498,7 @@ PrefabInstance:
     - target: {fileID: 140782559582041886, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
       propertyPath: m_GravityScale
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 140782559582041889, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
@@ -7309,7 +7303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 840404042}
   m_Layer: 0
-  m_Name: MoveableObjects
+  m_Name: MovableObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7402,7 +7396,7 @@ PrefabInstance:
     - target: {fileID: 140782559582041886, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
       propertyPath: m_GravityScale
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 140782559582041889, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
@@ -7896,7 +7890,7 @@ PrefabInstance:
     - target: {fileID: 140782559582041886, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
       propertyPath: m_GravityScale
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 140782559582041889, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
@@ -9877,7 +9871,7 @@ PrefabInstance:
     - target: {fileID: 140782559582041886, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
       propertyPath: m_GravityScale
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 140782559582041889, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
@@ -11606,7 +11600,7 @@ PrefabInstance:
     - target: {fileID: 140782559582041886, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
       propertyPath: m_GravityScale
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 140782559582041889, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
@@ -12252,7 +12246,7 @@ PrefabInstance:
     - target: {fileID: 140782559582041886, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
       propertyPath: m_GravityScale
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 140782559582041889, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
@@ -13661,7 +13655,7 @@ PrefabInstance:
     - target: {fileID: 140782559582041886, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
       propertyPath: m_GravityScale
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 140782559582041889, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
@@ -13771,7 +13765,7 @@ PrefabInstance:
     - target: {fileID: 140782559582041886, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
       propertyPath: m_GravityScale
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 140782559582041889, guid: c8142232694ad4220ae54ca4bbc27a64,
         type: 3}
@@ -16950,6 +16944,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
+      propertyPath: goombaControllers.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
+        type: 3}
+      propertyPath: goombaGameObjects.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 59626794}
@@ -17037,72 +17041,72 @@ PrefabInstance:
         type: 3}
       propertyPath: goombaGameObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 331629093}
+      objectReference: {fileID: 645286168}
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: goombaGameObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 645286168}
+      objectReference: {fileID: 1291229322}
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: goombaGameObjects.Array.data[2]
       value: 
-      objectReference: {fileID: 1291229322}
+      objectReference: {fileID: 570646683}
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: goombaGameObjects.Array.data[3]
       value: 
-      objectReference: {fileID: 570646683}
+      objectReference: {fileID: 1881910024}
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: goombaGameObjects.Array.data[4]
       value: 
-      objectReference: {fileID: 1881910024}
+      objectReference: {fileID: 978037157}
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: goombaGameObjects.Array.data[5]
       value: 
-      objectReference: {fileID: 978037157}
+      objectReference: {fileID: 2036021674}
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: goombaGameObjects.Array.data[6]
       value: 
-      objectReference: {fileID: 2036021674}
+      objectReference: {fileID: 1442108988}
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: goombaGameObjects.Array.data[7]
       value: 
-      objectReference: {fileID: 1442108988}
+      objectReference: {fileID: 1147042625}
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: goombaGameObjects.Array.data[8]
       value: 
-      objectReference: {fileID: 1147042625}
+      objectReference: {fileID: 1107563011}
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: goombaGameObjects.Array.data[9]
       value: 
-      objectReference: {fileID: 1107563011}
+      objectReference: {fileID: 1796784210}
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: goombaGameObjects.Array.data[10]
       value: 
-      objectReference: {fileID: 1796784210}
+      objectReference: {fileID: 1644946929}
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: goombaGameObjects.Array.data[11]
       value: 
-      objectReference: {fileID: 1644946929}
+      objectReference: {fileID: 932141727}
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: goombaGameObjects.Array.data[12]
       value: 
-      objectReference: {fileID: 932141727}
+      objectReference: {fileID: 414429510}
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: goombaGameObjects.Array.data[13]
       value: 
-      objectReference: {fileID: 414429510}
+      objectReference: {fileID: 176846927}
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: goombaGameObjects.Array.data[14]

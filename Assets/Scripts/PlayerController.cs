@@ -171,6 +171,11 @@ public class PlayerController : MonoBehaviour
             playerSprite.SetActive(false);
         }
 
+        if (other.gameObject.CompareTag("DeathAbyss"))
+        {
+            _playerRb.velocity = Vector2.zero;
+        }
+
         if (!other.gameObject.CompareTag("BigMushroom") || !_isEatable) return;
         GameStatusController.PlayerTag = "BigPlayer";
         tag = GameStatusController.PlayerTag;
@@ -182,7 +187,6 @@ public class PlayerController : MonoBehaviour
     {
         _playerAnim.SetBool(DieB, isDead);
         GameStatusController.IsDead = true;
-        // _playerRb.velocity = Vector2.zero;
         StartCoroutine(DieAnim());
         StartCoroutine(LoadingScene());
     }

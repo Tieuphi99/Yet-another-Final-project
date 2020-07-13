@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Security.Cryptography;
 using UnityEngine;
 
 namespace EnemyScripts
@@ -23,6 +24,7 @@ namespace EnemyScripts
         // Update is called once per frame
         void Update()
         {
+            OutOfBoundDestroy();
             Move();
         }
 
@@ -39,12 +41,6 @@ namespace EnemyScripts
             StartCoroutine(Destroy());
         }
 
-        IEnumerator Destroy()
-        {
-            yield return new WaitForSeconds(0.3f);
-            Destroy(gameObject);
-        }
-
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Ground") &&
@@ -54,6 +50,20 @@ namespace EnemyScripts
                 speed = -speed;
                 Move();
             }
+        }
+
+        private void OutOfBoundDestroy()
+        {
+            if (transform.position.x - player.transform.position.x < -15)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        IEnumerator Destroy()
+        {
+            yield return new WaitForSeconds(0.3f);
+            Destroy(gameObject);
         }
     }
 }

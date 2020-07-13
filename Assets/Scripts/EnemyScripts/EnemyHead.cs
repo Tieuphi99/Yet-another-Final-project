@@ -5,12 +5,12 @@ namespace EnemyScripts
 {
     public class EnemyHead : MonoBehaviour
     {
-        private GoombaController _goombaController;
-        public GameObject goomba;
+        private EnemyController _enemyController;
+        public GameObject enemy;
 
         private void Awake()
         {
-            _goombaController = goomba.GetComponent<GoombaController>();
+            _enemyController = enemy.GetComponent<EnemyController>();
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -18,9 +18,9 @@ namespace EnemyScripts
             if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BigPlayer"))
             {
                 GameStatusController.Score += 200;
-                other.rigidbody.AddForce(new Vector2(0f, _goombaController.pushForce));
-                _goombaController.speed = 0;
-                _goombaController.Die();
+                other.rigidbody.AddForce(new Vector2(0f, _enemyController.pushForce));
+                _enemyController.speed = 0;
+                _enemyController.Die();
             }
         }
     }

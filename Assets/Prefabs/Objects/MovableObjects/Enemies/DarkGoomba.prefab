@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4392269553133641865}
   m_Layer: 0
   m_Name: DarkGoomba
-  m_TagString: Enemy
+  m_TagString: Goomba
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,7 +172,9 @@ MonoBehaviour:
   speed: 2
   pushForce: 400
   isTouchByPlayer: 0
-  deadDisableCollider: {fileID: 6128006002240828193}
+  deadDisableCollider:
+  - {fileID: 6128006002240828193}
+  deadEnableCollider: {fileID: 0}
   player: {fileID: 0}
 --- !u!1 &4354584424693637154
 GameObject:
@@ -230,7 +232,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.1919722}
+  m_Size: {x: 0.81, y: 0.1919722}
   m_EdgeRadius: 0
 --- !u!114 &6630738012960786380
 MonoBehaviour:
@@ -244,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48bdf1ba280864ccfb381a4b495fa7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goomba: {fileID: 140782559582041889}
+  enemy: {fileID: 140782559582041889}
 --- !u!1 &4388187777132333211
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +303,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.04, y: 0.7165038}
+  m_Size: {x: 0.95, y: 0.7165038}
   m_EdgeRadius: 0
 --- !u!114 &3061857085521458329
 MonoBehaviour:

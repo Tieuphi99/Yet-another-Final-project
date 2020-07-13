@@ -9,8 +9,8 @@ namespace SystemScripts
     {
         public PlayerController player;
         public GameStatusController gameStatusController;
-        public List<GoombaController> goombaControllers;
-        public List<GameObject> goombaGameObjects;
+        public List<EnemyController> enemyControllers;
+        public List<GameObject> enemyGameObjects;
         public GameObject invisibleBrick;
         public GameObject invisiblePowerUp;
 
@@ -61,35 +61,35 @@ namespace SystemScripts
         private void StopGoombaMovingWhenPlayerDie()
         {
             if (!player.isDead) return;
-            for (var i = 0; i < goombaControllers.Count; i++)
+            for (var i = 0; i < enemyControllers.Count; i++)
             {
-                if (goombaControllers[i] == null)
+                if (enemyControllers[i] == null)
                 {
-                    goombaControllers.Remove(goombaControllers[i]);
+                    enemyControllers.Remove(enemyControllers[i]);
                 }
                 else
                 {
-                    goombaControllers[i].speed = 0;
-                    goombaControllers[i].gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                    goombaControllers[i].gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+                    enemyControllers[i].speed = 0;
+                    enemyControllers[i].gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                    enemyControllers[i].gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
                 }
             }
         }
 
         private void SetActiveGoombaWhenSeePlayer()
         {
-            for (var i = 0; i < goombaGameObjects.Count; i++)
+            for (var i = 0; i < enemyGameObjects.Count; i++)
             {
-                if (goombaGameObjects[i] != null)
+                if (enemyGameObjects[i] != null)
                 {
-                    if (goombaGameObjects[i].transform.position.x - player.transform.position.x < 12)
+                    if (enemyGameObjects[i].transform.position.x - player.transform.position.x < 12)
                     {
-                        goombaGameObjects[i].SetActive(true);
+                        enemyGameObjects[i].SetActive(true);
                     }
                 }
                 else
                 {
-                    goombaGameObjects.Remove(goombaGameObjects[i]);
+                    enemyGameObjects.Remove(enemyGameObjects[i]);
                 }
             }
         }

@@ -23,6 +23,8 @@ TagManager:
   - Stand
   - Castle
   - DeathAbyss
+  - Koopa
+  - Goomba
   layers:
   - Default
   - TransparentFX

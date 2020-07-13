@@ -7,19 +7,19 @@ namespace EnemyScripts
     public class EnemyBody : MonoBehaviour
     {
         private PlayerController _playerController;
-        private GoombaController _goombaController;
+        private EnemyController _enemyController;
 
         public GameObject goomba;
 
         private void Awake()
         {
-            _goombaController = goomba.GetComponent<GoombaController>();
-            _playerController = _goombaController.player.GetComponent<PlayerController>();
+            _enemyController = goomba.GetComponent<EnemyController>();
+            _playerController = _enemyController.player.GetComponent<PlayerController>();
         }
 
         private void Update()
         {
-            if (_goombaController.isTouchByPlayer)
+            if (_enemyController.isTouchByPlayer)
             {
                 GetComponent<BoxCollider2D>().offset = Vector2.zero;
                 GetComponent<BoxCollider2D>().size = new Vector2(1.04f, 0.32f);

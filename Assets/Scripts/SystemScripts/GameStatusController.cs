@@ -14,6 +14,8 @@ namespace SystemScripts
         public GameObject pausePopup;
         public GameObject instructionPopup;
         public GameObject creditPopup;
+        private AudioSource _gameStatusAudio;
+        public AudioClip pauseSound;
 
         private bool _pauseTrigger;
         public static int CollectedCoin;
@@ -28,6 +30,7 @@ namespace SystemScripts
 
         private void Awake()
         {
+            _gameStatusAudio = GetComponent<AudioSource>();
             _pauseTrigger = false;
         }
 
@@ -120,6 +123,7 @@ namespace SystemScripts
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
+                    _gameStatusAudio.PlayOneShot(pauseSound);
                     _pauseTrigger = !_pauseTrigger;
                     pausePopup.SetActive(_pauseTrigger);
                     Time.timeScale = _pauseTrigger ? 0 : 1;

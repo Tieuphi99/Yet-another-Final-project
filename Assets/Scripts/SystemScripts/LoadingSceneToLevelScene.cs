@@ -8,9 +8,12 @@ namespace SystemScripts
     {
         public GameObject liveStat;
         public GameObject gameOverPopup;
+        private AudioSource _loadSceneAudio;
+        public AudioClip gameoverSound;
 
         private void Start()
         {
+            _loadSceneAudio = GetComponent<AudioSource>();
             if (GameStatusController.Live < 1)
             {
                 GameStatusController.IsGameOver = true;
@@ -32,6 +35,7 @@ namespace SystemScripts
             {
                 liveStat.SetActive(false);
                 gameOverPopup.SetActive(true);
+                _loadSceneAudio.PlayOneShot(gameoverSound);
                 StartCoroutine(StartingScene());
             }
         }
@@ -52,7 +56,7 @@ namespace SystemScripts
 
         private static IEnumerator StartingScene()
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(4.5f);
             SceneManager.LoadScene(0);
             GameStatusController.Live = 3;
             GameStatusController.Score = 0;

@@ -7,9 +7,12 @@ namespace EnemyScripts
     {
         private EnemyController _enemyController;
         public GameObject enemy;
+        private AudioSource _enemyAudio;
+        public AudioClip hitByPlayerSound;
 
         private void Awake()
         {
+            _enemyAudio = GetComponent<AudioSource>();
             _enemyController = enemy.GetComponent<EnemyController>();
         }
 
@@ -17,6 +20,7 @@ namespace EnemyScripts
         {
             if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BigPlayer"))
             {
+                _enemyAudio.PlayOneShot(hitByPlayerSound);
                 GameStatusController.Score += 200;
                 other.rigidbody.AddForce(new Vector2(0f, _enemyController.pushForce));
                 _enemyController.speed = 0;

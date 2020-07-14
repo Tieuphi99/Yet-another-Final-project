@@ -27,10 +27,14 @@ public class PlayerController : MonoBehaviour
     public GameObject smallPlayer;
     public GameObject smallPlayerCollider;
     public GameObject playerCol;
-
     private Animator _playerAnim;
     private Rigidbody2D _playerRb;
+    private AudioSource _playerAudio;
 
+    public AudioClip jumpSound;
+    public AudioClip stageClearSound;
+    public AudioClip flagPoleSound;
+    
     private static readonly int IdleB = Animator.StringToHash("Idle_b");
     private static readonly int WalkB = Animator.StringToHash("Walk_b");
     private static readonly int RunB = Animator.StringToHash("Run_b");
@@ -47,6 +51,7 @@ public class PlayerController : MonoBehaviour
             tag = GameStatusController.PlayerTag;
         }
 
+        _playerAudio = GetComponent<AudioSource>();
         _velocity = Vector3.zero;
         _playerAnim = GetComponent<Animator>();
         _playerRb = GetComponent<Rigidbody2D>();
@@ -109,6 +114,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && _isOnGround)
         {
+            _playerAudio.PlayOneShot(jumpSound);
             _isOnGround = false;
             _playerAnim.SetTrigger(JumpTrig);
             _playerRb.AddForce(new Vector2(0f, jumpForce));
@@ -156,12 +162,14 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Pole"))
         {
+            _playerAudio.PlayOneShot(flagPoleSound);
             _flagPos = other.gameObject.transform.position.x;
             _isFinish = true;
             _playerRb.velocity = Vector2.zero;
             _playerRb.isKinematic = true;
             isWalkingToCastle = true;
             isStopTime = true;
+            StartCoroutine(PlayStageClearSound());
         }
 
         if (other.gameObject.CompareTag("Castle"))
@@ -230,7 +238,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator HugPole()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1.5f);
         _isNotHugPole = true;
     }
 
@@ -242,7 +250,13 @@ public class PlayerController : MonoBehaviour
 
     private static IEnumerator LoadingScene()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3.5f);
         SceneManager.LoadScene(1);
+    }
+
+    private IEnumerator PlayStageClearSound()
+    {
+        yield return new WaitForSeconds(1.5f);
+        _playerAudio.PlayOneShot(stageClearSound);
     }
 }

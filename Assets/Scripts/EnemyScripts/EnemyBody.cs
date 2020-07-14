@@ -11,8 +11,13 @@ namespace EnemyScripts
 
         public GameObject enemy;
 
+        private AudioSource _enemyAudio;
+
+        public AudioClip hitPlayerSound;
+        
         private void Awake()
         {
+            _enemyAudio = GetComponent<AudioSource>();
             if (enemy != null)
             {
                 _enemyController = enemy.GetComponent<EnemyController>();
@@ -33,6 +38,7 @@ namespace EnemyScripts
         {
             if (other.gameObject.CompareTag("Player"))
             {
+                _enemyAudio.PlayOneShot(hitPlayerSound);
                 // StartCoroutine(Die(other.gameObject));
                 GameStatusController.IsDead = true;
             }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using SystemScripts;
-using UnityEditor;
 using UnityEngine;
 
 public class PowerUpsController : MonoBehaviour
@@ -23,7 +20,7 @@ public class PowerUpsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isTouchByPlayer)
+        if (isTouchByPlayer && !CompareTag("Coin"))
         {
             if (transform.position.y < _firstYPos + 1)
             {
@@ -57,20 +54,27 @@ public class PowerUpsController : MonoBehaviour
             speedRight = -speedRight;
         }
 
-        if (!other.gameObject.CompareTag("Enemy")) return;
+        if (!other.gameObject.CompareTag("Goomba") || !other.gameObject.CompareTag("Koopa")) return;
         GetComponent<BoxCollider2D>().isTrigger = true;
         GetComponent<Rigidbody2D>().isKinematic = true;
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.gameObject.CompareTag("Enemy")) return;
+        if (!other.gameObject.CompareTag("Goomba") || !other.gameObject.CompareTag("Koopa")) return;
         GetComponent<BoxCollider2D>().isTrigger = false;
         GetComponent<Rigidbody2D>().isKinematic = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (CompareTag("Coin") && (other.CompareTag("Player") || other.CompareTag("BigPlayer")))
+        {
+            GameStatusController.CollectedCoin += 1;
+            GameStatusController.Score += 200;
+            Destroy(gameObject);
+        }
+
         InteractionWithPlayer(other.gameObject);
     }
 

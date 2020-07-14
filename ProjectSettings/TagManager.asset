@@ -25,6 +25,7 @@ TagManager:
   - DeathAbyss
   - Koopa
   - Goomba
+  - Coin
   layers:
   - Default
   - TransparentFX

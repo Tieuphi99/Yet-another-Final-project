@@ -34,7 +34,6 @@ namespace EnemyScripts
             if (other.gameObject.CompareTag("Player"))
             {
                 // StartCoroutine(Die(other.gameObject));
-                GameStatusController.Live -= 1;
                 GameStatusController.IsDead = true;
             }
             else if (other.gameObject.CompareTag("BigPlayer"))
@@ -44,7 +43,6 @@ namespace EnemyScripts
                 _playerController.gameObject.tag = GameStatusController.PlayerTag;
                 _playerController.ChangeAnim();
                 // StartCoroutine(Die(other.gameObject));
-                // _playerController.isDead = true;
             }
         }
 

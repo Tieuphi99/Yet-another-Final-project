@@ -9,12 +9,24 @@ namespace SystemScripts
         public GameObject liveStat;
         public GameObject gameOverPopup;
 
-        // Start is called before the first frame update
         private void Start()
         {
+            if (GameStatusController.Live < 1)
+            {
+                GameStatusController.IsGameOver = true;
+            }
+
             if (!GameStatusController.IsGameOver)
             {
-                StartCoroutine(GameStatusController.IsDead ? RepeatLevelScene() : LevelScene());
+                if (GameStatusController.IsDead)
+                {
+                    GameStatusController.Live -= 1;
+                    StartCoroutine(RepeatLevelScene());
+                }
+                else
+                {
+                    StartCoroutine(LevelScene());
+                }
             }
             else
             {

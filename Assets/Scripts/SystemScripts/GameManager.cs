@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using EnemyScripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,25 +18,8 @@ namespace SystemScripts
         public float time = 400;
         public float finalTime;
 
-        // public GameObject playerPrefab;
-        // public GameObject goombaPrefab;
-        // public Transform movableObjectsParent;
-        // public GameObject mainCamera;
-        //
-        // public GameObject player;
-        // private GameObject _goomba;
-
         private void Awake()
         {
-            // player = Instantiate(playerPrefab, movableObjectsParent);
-            // _goomba = Instantiate(goombaPrefab, movableObjectsParent);
-            //
-            // _goomba.GetComponent<GoombaController>().player = player;
-            // mainCamera.GetComponent<FollowPlayer>().player = player;
-            // DontDestroyOnLoad(gameStatusController.playerScoreText.gameObject);
-            // DontDestroyOnLoad(gameStatusController.collectedCoinText.gameObject);
-
-            // gameStatusController.SetLevel(level);
             if (gameStatusController != null)
             {
                 gameStatusController.SetTime(time);
@@ -94,47 +78,33 @@ namespace SystemScripts
             }
         }
 
-        // private void UpdateWhenKillGoomba()
-        // {
-        //     for (var i = 0; i < goombaControllers.Count; i++)
-        //     {
-        //         if (!goombaControllers[i].isTouchByPlayer) continue;
-        //         GameStatusController.Score += 100;
-        //         goombaControllers.Remove(goombaControllers[i]);
-        //         goombaGameObjects.Remove(goombaGameObjects[i]);
-        //     }
-        // }
-
-        // private void UpdateScoreCoinBrick()
-        // {
-        //     for (var i = 0; i < coinBrickControllers.Count; i++)
-        //     {
-        //         if (!coinBrickControllers[i].isTouchByPlayer) continue;
-        //         GameStatusController.Score += 200;
-        //         GameStatusController.CollectedCoin += 1;
-        //         coinBrickControllers.Remove(coinBrickControllers[i]);
-        //     }
-        //
-        //     if (GameStatusController.CollectedCoin > 99)
-        //     {
-        //         GameStatusController.CollectedCoin = 0;
-        //     }
-        // }
-
         private void UpdateTime()
         {
-            //     gameStatusController.SetCoin(collectedCoin);
-            //     gameStatusController.SetScore(Score.ToString());
             if (!GameStatusController.IsDead && !player.isWalkingToCastle && !player.isInCastle)
             {
                 gameStatusController.SetTime(time -= Time.deltaTime * 2);
+                if (time < 0)
+                {
+                    time = 0;
+                    GameStatusController.IsDead = true;
+                }
             }
             else if (player.isInCastle)
             {
                 gameStatusController.SetTime(time -= Time.deltaTime * 60);
+
                 if (time < 0)
                 {
                     time = 0;
+                    StartCoroutine(NextLevel());
+                }
+                else
+                {
+                    if (finalTime - time >= 1f)
+                    {
+                        GameStatusController.Score += 50;
+                        finalTime = time;
+                    }
                 }
             }
         }
@@ -151,9 +121,10 @@ namespace SystemScripts
             }
         }
 
-        // public static void NextLevelScene()
-        // {
-        //     SceneManager.LoadScene(GameStatusController.CurrentLevel);
-        // }
+        private IEnumerator NextLevel()
+        {
+            yield return new WaitForSeconds(3);
+            SceneManager.LoadScene(1);
+        }
     }
 }

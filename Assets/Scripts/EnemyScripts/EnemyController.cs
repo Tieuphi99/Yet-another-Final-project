@@ -23,7 +23,6 @@ namespace EnemyScripts
             _enemyAnim = GetComponent<Animator>();
         }
 
-        // Update is called once per frame
         void Update()
         {
             OutOfBoundDestroy();

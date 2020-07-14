@@ -29,18 +29,10 @@ namespace SystemScripts
         private void Awake()
         {
             _pauseTrigger = false;
-            // if (Live > 0)
-            // {
-            //     DontDestroyOnLoad(gameObject);
-            // }
         }
 
         private void Update()
         {
-            if (Live < 0)
-            {
-                IsGameOver = true;
-            }
             SetCoin();
             SetLevel();
             SetScore();
@@ -93,11 +85,11 @@ namespace SystemScripts
             _second = second;
             if (_second > 0)
             {
-                if (_second >= 100)
+                if (_second > 99.5f)
                 {
                     secondsText.SetText(Mathf.RoundToInt(_second).ToString());
                 }
-                else if (_second >= 10)
+                else if (_second > 9.5f)
                 {
                     secondsText.SetText($"0{Mathf.RoundToInt(_second).ToString()}");
                 }
@@ -124,11 +116,14 @@ namespace SystemScripts
 
         private void Pause()
         {
-            if (Input.GetKeyDown(KeyCode.P))
+            if (SceneManager.GetActiveScene().buildIndex > 1)
             {
-                _pauseTrigger = !_pauseTrigger;
-                pausePopup.SetActive(_pauseTrigger);
-                Time.timeScale = _pauseTrigger ? 0 : 1;
+                if (Input.GetKeyDown(KeyCode.P))
+                {
+                    _pauseTrigger = !_pauseTrigger;
+                    pausePopup.SetActive(_pauseTrigger);
+                    Time.timeScale = _pauseTrigger ? 0 : 1;
+                }
             }
         }
 
@@ -137,6 +132,8 @@ namespace SystemScripts
             SceneManager.LoadScene(1);
             CurrentLevel = 2;
             Live = 3;
+            Score = 0;
+            CollectedCoin = 0;
         }
 
         public void OpenInstructionPopup()
@@ -148,12 +145,12 @@ namespace SystemScripts
         {
             creditPopup.SetActive(true);
         }
-        
+
         public void CloseInstructionPopup()
         {
             instructionPopup.SetActive(false);
         }
-        
+
         public void CloseCreditPopup()
         {
             creditPopup.SetActive(false);

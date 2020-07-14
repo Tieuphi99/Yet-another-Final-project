@@ -49,7 +49,6 @@ public class PlayerController : MonoBehaviour
         _velocity = Vector3.zero;
         _playerAnim = GetComponent<Animator>();
         _playerRb = GetComponent<Rigidbody2D>();
-        // isDead = false;
         _isFinish = false;
         _isOnGround = true;
         isInCastle = false;
@@ -166,7 +165,6 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Castle"))
         {
-            StartCoroutine(NextLevel());
             isInCastle = true;
             isWalkingToCastle = false;
             playerSprite.SetActive(false);
@@ -177,7 +175,22 @@ public class PlayerController : MonoBehaviour
             _playerRb.velocity = Vector2.zero;
         }
 
+        if (other.gameObject.CompareTag("1UpMushroom"))
+        {
+            GameStatusController.Live += 1;
+        }
+
+        if (other.gameObject.CompareTag("FireFlower") && CompareTag("Player"))
+        {
+            TurnIntoBigPlayer();
+        }
+
         if (!other.gameObject.CompareTag("BigMushroom") || !_isEatable) return;
+        TurnIntoBigPlayer();
+    }
+
+    private void TurnIntoBigPlayer()
+    {
         GameStatusController.PlayerTag = "BigPlayer";
         tag = GameStatusController.PlayerTag;
         GameStatusController.IsBigPlayer = true;
@@ -216,20 +229,14 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1.2f);
         _isNotHugPole = true;
     }
-
-    private IEnumerator NextLevel()
-    {
-        yield return new WaitForSeconds(7);
-        SceneManager.LoadScene(1);
-    }
-
+    
     private IEnumerator DieAnim()
     {
         yield return new WaitForSeconds(1);
         playerCol.SetActive(false);
     }
 
-    private IEnumerator LoadingScene()
+    private static IEnumerator LoadingScene()
     {
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene(1);

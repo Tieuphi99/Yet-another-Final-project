@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using SystemScripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -180,13 +181,16 @@ public class PlayerController : MonoBehaviour
             GameStatusController.Live += 1;
         }
 
-        if (other.gameObject.CompareTag("FireFlower") && CompareTag("Player"))
+        if (!other.gameObject.CompareTag("BigMushroom") || !_isEatable) return;
+        TurnIntoBigPlayer();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("FireFlower") && CompareTag("Player") && _isEatable)
         {
             TurnIntoBigPlayer();
         }
-
-        if (!other.gameObject.CompareTag("BigMushroom") || !_isEatable) return;
-        TurnIntoBigPlayer();
     }
 
     private void TurnIntoBigPlayer()
@@ -229,7 +233,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1.2f);
         _isNotHugPole = true;
     }
-    
+
     private IEnumerator DieAnim()
     {
         yield return new WaitForSeconds(1);

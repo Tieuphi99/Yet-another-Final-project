@@ -15,18 +15,7 @@ public class CoinBrickController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            if (isNotSpecialBrick)
-            {
-                GameStatusController.Score += 200;
-                GameStatusController.CollectedCoin += 1;
-            }
-
-            isTouchByPlayer = true;
-            _coinBrickAnim.SetBool(TouchB, isTouchByPlayer);
-        }
-        else if (other.gameObject.CompareTag("BigPlayer"))
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BigPlayer"))
         {
             if (isNotSpecialBrick)
             {

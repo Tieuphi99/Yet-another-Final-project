@@ -7587,6 +7587,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoinBrick
       objectReference: {fileID: 0}
+    - target: {fileID: 6002575483965112678, guid: aa87f4e7d800e41b0997fe2120683d68,
+        type: 3}
+      propertyPath: m_TagString
+      value: PowerBrick
+      objectReference: {fileID: 0}
     - target: {fileID: 9115763966427098048, guid: aa87f4e7d800e41b0997fe2120683d68,
         type: 3}
       propertyPath: m_IsActive
@@ -15047,10 +15052,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 75531748}
     m_Modifications:
+    - target: {fileID: 4059790012830310826, guid: 5f184558bafb449e99502833c7812681,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5407727845453544337, guid: 5f184558bafb449e99502833c7812681,
         type: 3}
       propertyPath: m_Name
       value: BrownBrick (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8523426447889179092, guid: 5f184558bafb449e99502833c7812681,
+        type: 3}
+      propertyPath: isSpecialBrick
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8523426447889179092, guid: 5f184558bafb449e99502833c7812681,
+        type: 3}
+      propertyPath: specialBrickHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8768637447044340582, guid: 5f184558bafb449e99502833c7812681,
         type: 3}

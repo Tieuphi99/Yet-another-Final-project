@@ -173,7 +173,7 @@ MonoBehaviour:
   pushForce: 400
   isTouchByPlayer: 0
   deadDisableCollider:
-  - {fileID: 6128006002240828193}
+  - {fileID: 4748182353129187720}
   deadEnableCollider: {fileID: 0}
   player: {fileID: 0}
 --- !u!1 &4354584424693637154
@@ -317,4 +317,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b2b30d2d18d4318a7ad37683d91dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goomba: {fileID: 140782559582041889}
+  enemy: {fileID: 140782559582041889}

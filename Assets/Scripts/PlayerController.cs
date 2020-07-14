@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         _velocity = Vector3.zero;
         _playerAnim = GetComponent<Animator>();
         _playerRb = GetComponent<Rigidbody2D>();
-        isDead = false;
+        // isDead = false;
         _isFinish = false;
         _isOnGround = true;
         isInCastle = false;
@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        isDead = GameStatusController.IsDead;
         if (isDead)
         {
             Die();

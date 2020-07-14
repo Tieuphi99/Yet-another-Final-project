@@ -60,7 +60,7 @@ namespace SystemScripts
 
         private void StopGoombaMovingWhenPlayerDie()
         {
-            if (!player.isDead) return;
+            if (!GameStatusController.IsDead) return;
             for (var i = 0; i < enemyControllers.Count; i++)
             {
                 if (enemyControllers[i] == null)
@@ -125,7 +125,7 @@ namespace SystemScripts
         {
             //     gameStatusController.SetCoin(collectedCoin);
             //     gameStatusController.SetScore(Score.ToString());
-            if (!player.isDead && !player.isWalkingToCastle && !player.isInCastle)
+            if (!GameStatusController.IsDead && !player.isWalkingToCastle && !player.isInCastle)
             {
                 gameStatusController.SetTime(time -= Time.deltaTime * 2);
             }

@@ -11,7 +11,8 @@ namespace SystemScripts
                 GameStatusController.Live -= 1;
                 GameStatusController.IsBigPlayer = false;
                 GameStatusController.PlayerTag = "Player";
-                other.gameObject.GetComponent<PlayerController>().isDead = true;
+                // other.gameObject.GetComponent<PlayerController>().isDead = true;
+                GameStatusController.IsDead = true;
             }
             else
             {

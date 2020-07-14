@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b2b30d2d18d4318a7ad37683d91dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goomba: {fileID: 6691854002660372949}
+  enemy: {fileID: 6691854002660372949}
 --- !u!61 &2901405652045154894
 BoxCollider2D:
   m_ObjectHideFlags: 0

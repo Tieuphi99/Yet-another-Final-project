@@ -9,20 +9,23 @@ namespace EnemyScripts
         private PlayerController _playerController;
         private EnemyController _enemyController;
 
-        public GameObject goomba;
+        public GameObject enemy;
 
         private void Awake()
         {
-            _enemyController = goomba.GetComponent<EnemyController>();
-            _playerController = _enemyController.player.GetComponent<PlayerController>();
+            if (enemy != null)
+            {
+                _enemyController = enemy.GetComponent<EnemyController>();
+                _playerController = _enemyController.player.GetComponent<PlayerController>();
+            }
         }
 
         private void Update()
         {
-            if (_enemyController.isTouchByPlayer)
+            if (_enemyController != null && _enemyController.isTouchByPlayer)
             {
                 GetComponent<BoxCollider2D>().offset = Vector2.zero;
-                GetComponent<BoxCollider2D>().size = new Vector2(1.04f, 0.32f);
+                GetComponent<BoxCollider2D>().size = new Vector2(1, 0.01f);
             }
         }
 
@@ -32,12 +35,12 @@ namespace EnemyScripts
             {
                 // StartCoroutine(Die(other.gameObject));
                 GameStatusController.Live -= 1;
-                _playerController.isDead = true;
+                GameStatusController.IsDead = true;
             }
             else if (other.gameObject.CompareTag("BigPlayer"))
             {
                 GameStatusController.IsBigPlayer = false;
-                GameStatusController.PlayerTag = "Player"; 
+                GameStatusController.PlayerTag = "Player";
                 _playerController.gameObject.tag = GameStatusController.PlayerTag;
                 _playerController.ChangeAnim();
                 // StartCoroutine(Die(other.gameObject));

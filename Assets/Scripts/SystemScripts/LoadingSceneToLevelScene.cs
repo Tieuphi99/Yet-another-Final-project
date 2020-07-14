@@ -8,7 +8,7 @@ namespace SystemScripts
     {
         public GameObject liveStat;
         public GameObject gameOverPopup;
-        
+
         // Start is called before the first frame update
         private void Start()
         {
@@ -21,10 +21,6 @@ namespace SystemScripts
                 liveStat.SetActive(false);
                 gameOverPopup.SetActive(true);
                 StartCoroutine(StartingScene());
-                GameStatusController.Live = 3;
-                GameStatusController.Score = 0;
-                GameStatusController.CollectedCoin = 0;
-                GameStatusController.IsGameOver = false;
             }
         }
 
@@ -46,7 +42,11 @@ namespace SystemScripts
         {
             yield return new WaitForSeconds(2);
             SceneManager.LoadScene(0);
+            GameStatusController.Live = 3;
+            GameStatusController.Score = 0;
+            GameStatusController.CollectedCoin = 0;
             GameStatusController.IsGameOver = false;
+            GameStatusController.IsDead = false;
         }
     }
 }

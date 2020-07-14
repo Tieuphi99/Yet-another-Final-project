@@ -13,6 +13,7 @@ namespace SystemScripts
         public TextMeshProUGUI livesText;
         public GameObject pausePopup;
         public GameObject instructionPopup;
+        public GameObject creditPopup;
 
         private bool _pauseTrigger;
         public static int CollectedCoin;
@@ -142,10 +143,20 @@ namespace SystemScripts
         {
             instructionPopup.SetActive(true);
         }
+
+        public void OpenCreditPopup()
+        {
+            creditPopup.SetActive(true);
+        }
         
         public void CloseInstructionPopup()
         {
             instructionPopup.SetActive(false);
+        }
+        
+        public void CloseCreditPopup()
+        {
+            creditPopup.SetActive(false);
         }
 
         public void ExitGame()

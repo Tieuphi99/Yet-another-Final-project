@@ -14,7 +14,6 @@ namespace EnemyScripts
         private Animator _enemyAnim;
         public List<Collider2D> deadDisableCollider;
         public Collider2D deadEnableCollider;
-        public GameObject player;
 
         private static readonly int DieB = Animator.StringToHash("Die_b");
 
@@ -25,7 +24,6 @@ namespace EnemyScripts
 
         void Update()
         {
-            OutOfBoundDestroy();
             Move();
         }
 
@@ -72,14 +70,6 @@ namespace EnemyScripts
             else
             {
                 localScale.x *= -1f;
-            }
-        }
-
-        private void OutOfBoundDestroy()
-        {
-            if (transform.position.x - player.transform.position.x < -15)
-            {
-                Destroy(gameObject);
             }
         }
 

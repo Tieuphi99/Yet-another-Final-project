@@ -6,7 +6,7 @@ namespace EnemyScripts
 {
     public class EnemyBody : MonoBehaviour
     {
-        private PlayerController _playerController;
+        // private PlayerController _playerController;
         private EnemyController _enemyController;
 
         public GameObject enemy;
@@ -14,14 +14,13 @@ namespace EnemyScripts
         private AudioSource _enemyAudio;
 
         public AudioClip hitPlayerSound;
-        
+
         private void Awake()
         {
             _enemyAudio = GetComponent<AudioSource>();
             if (enemy != null)
             {
                 _enemyController = enemy.GetComponent<EnemyController>();
-                _playerController = _enemyController.player.GetComponent<PlayerController>();
             }
         }
 
@@ -36,18 +35,28 @@ namespace EnemyScripts
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
             if (other.gameObject.CompareTag("Player"))
             {
-                _enemyAudio.PlayOneShot(hitPlayerSound);
                 // StartCoroutine(Die(other.gameObject));
-                GameStatusController.IsDead = true;
+                if (!playerController.isInvulnerable)
+                {
+                    _enemyAudio.PlayOneShot(hitPlayerSound);
+                    GameStatusController.IsDead = true;
+                }
+                else
+                {
+                    Physics2D.IgnoreCollision(GetComponent<Collider2D>(),
+                        playerController.smallPlayerCollider.GetComponent<Collider2D>());
+                }
             }
             else if (other.gameObject.CompareTag("BigPlayer"))
             {
                 GameStatusController.IsBigPlayer = false;
                 GameStatusController.PlayerTag = "Player";
-                _playerController.gameObject.tag = GameStatusController.PlayerTag;
-                _playerController.ChangeAnim();
+                playerController.gameObject.tag = GameStatusController.PlayerTag;
+                playerController.ChangeAnim();
+                playerController.isInvulnerable = true;
                 // StartCoroutine(Die(other.gameObject));
             }
         }

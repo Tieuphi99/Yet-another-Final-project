@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using SystemScripts;
 using UnityEngine;
 
@@ -44,7 +45,7 @@ public class PowerUpsController : MonoBehaviour
     {
         InteractionWithPlayer(other.gameObject);
 
-        if (CompareTag("FireFlower"))
+        if (CompareTag("FireFlower") || CompareTag("UltimateStar"))
         {
             GetComponent<BoxCollider2D>().isTrigger = true;
         }
@@ -54,16 +55,20 @@ public class PowerUpsController : MonoBehaviour
             speedRight = -speedRight;
         }
 
-        if (!other.gameObject.CompareTag("Goomba") || !other.gameObject.CompareTag("Koopa")) return;
-        GetComponent<BoxCollider2D>().isTrigger = true;
-        GetComponent<Rigidbody2D>().isKinematic = true;
+        if (other.gameObject.CompareTag("Goomba") || other.gameObject.CompareTag("Koopa"))
+        {
+            GetComponent<BoxCollider2D>().isTrigger = true;
+            GetComponent<Rigidbody2D>().isKinematic = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.gameObject.CompareTag("Goomba") || !other.gameObject.CompareTag("Koopa")) return;
-        GetComponent<BoxCollider2D>().isTrigger = false;
-        GetComponent<Rigidbody2D>().isKinematic = false;
+        if (other.gameObject.CompareTag("Goomba") || other.gameObject.CompareTag("Koopa"))
+        {
+            GetComponent<BoxCollider2D>().isTrigger = false;
+            GetComponent<Rigidbody2D>().isKinematic = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -100,11 +105,13 @@ public class PowerUpsController : MonoBehaviour
         if (other.CompareTag("Player") && _isEatable)
         {
             GameStatusController.Score += 1000;
+            _isEatable = false;
             Destroy(gameObject);
         }
         else if (other.CompareTag("BigPlayer") && _isEatable)
         {
             GameStatusController.Score += 1000;
+            _isEatable = false;
             Destroy(gameObject);
         }
     }

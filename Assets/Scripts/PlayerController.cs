@@ -10,15 +10,19 @@ public class PlayerController : MonoBehaviour
     public float slideDownSpeed = 410f;
     public float jumpForce = 795f;
     private float _flagPos;
+    private float _startInvincible;
+    private float _invincibleTime;
     [Range(0, 1)] public float smoothTime = 0.6f;
     public bool isDead;
     private bool _isOnGround;
-    private bool _isEatable;
+    public bool _isEatable;
     private bool _isFinish;
     private bool _isNotHugPole;
     public bool isWalkingToCastle;
     public bool isInCastle;
     public bool isStopTime;
+    public bool isInvulnerable;
+    public bool isInvincible;
     private Vector3 _velocity;
 
     public GameObject playerSprite;
@@ -35,7 +39,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpBigSound;
     public AudioClip stageClearSound;
     public AudioClip flagPoleSound;
-    
+
     private static readonly int IdleB = Animator.StringToHash("Idle_b");
     private static readonly int WalkB = Animator.StringToHash("Walk_b");
     private static readonly int RunB = Animator.StringToHash("Run_b");
@@ -44,9 +48,12 @@ public class PlayerController : MonoBehaviour
     private static readonly int DieB = Animator.StringToHash("Die_b");
     private static readonly int BigB = Animator.StringToHash("Big_b");
     private static readonly int HugB = Animator.StringToHash("Hug_b");
+    private static readonly int UltimateB = Animator.StringToHash("Ultimate_b");
+    private static readonly int UltimateDurationF = Animator.StringToHash("UltimateDuration_f");
 
     void Awake()
     {
+        isInvulnerable = false;
         if (GameStatusController.PlayerTag != null)
         {
             tag = GameStatusController.PlayerTag;
@@ -64,6 +71,21 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         isDead = GameStatusController.IsDead;
+        if (isInvincible)
+        {
+            _invincibleTime = Time.time - _startInvincible;
+            _playerAnim.SetFloat(UltimateDurationF, _invincibleTime);
+            if (Time.time - _startInvincible > 10)
+            {
+                StartCoroutine(BeNormal());
+            }
+        }
+
+        if (isInvulnerable)
+        {
+            StartCoroutine(BeVulnerable());
+        }
+
         if (isDead)
         {
             Die();
@@ -185,13 +207,17 @@ public class PlayerController : MonoBehaviour
             _playerRb.velocity = Vector2.zero;
         }
 
-        if (other.gameObject.CompareTag("1UpMushroom"))
+        if (other.gameObject.CompareTag("1UpMushroom") && _isEatable)
         {
             GameStatusController.Live += 1;
+            // _isEatable = false;
         }
 
-        if (!other.gameObject.CompareTag("BigMushroom") || !_isEatable) return;
-        TurnIntoBigPlayer();
+        if (other.gameObject.CompareTag("BigMushroom") && _isEatable)
+        {
+            TurnIntoBigPlayer();
+            // _isEatable = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -199,6 +225,15 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("FireFlower") && CompareTag("Player") && _isEatable)
         {
             TurnIntoBigPlayer();
+            // _isEatable = false;
+        }
+
+        if (other.gameObject.CompareTag("UltimateStar") && _isEatable)
+        {
+            isInvincible = true;
+            _playerAnim.SetBool(UltimateB, isInvincible);
+            _startInvincible = Time.time;
+            // _isEatable = false;
         }
     }
 
@@ -259,5 +294,18 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         _playerAudio.PlayOneShot(stageClearSound);
+    }
+
+    private IEnumerator BeVulnerable()
+    {
+        yield return new WaitForSeconds(2);
+        isInvulnerable = false;
+    }
+
+    private IEnumerator BeNormal()
+    {
+        yield return new WaitForSeconds(2);
+        isInvincible = false;
+        _playerAnim.SetBool(UltimateB, isInvincible);
     }
 }

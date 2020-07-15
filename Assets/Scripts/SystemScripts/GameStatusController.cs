@@ -7,6 +7,7 @@ namespace SystemScripts
     public class GameStatusController : MonoBehaviour
     {
         public TextMeshProUGUI playerScoreText;
+        public TextMeshProUGUI playerHighScoreText;
         public TextMeshProUGUI collectedCoinText;
         public TextMeshProUGUI levelText;
         public TextMeshProUGUI secondsText;
@@ -18,8 +19,10 @@ namespace SystemScripts
         public AudioClip pauseSound;
 
         private bool _pauseTrigger;
+
         public static int CollectedCoin;
         public static int Score;
+        private static int _highScore;
         public static int Live;
         public static int CurrentLevel;
         public static bool IsDead;
@@ -30,37 +33,43 @@ namespace SystemScripts
 
         private void Awake()
         {
+            SetScore(playerHighScoreText, _highScore);
             _gameStatusAudio = GetComponent<AudioSource>();
             _pauseTrigger = false;
         }
 
         private void Update()
         {
+            if (Score > _highScore)
+            {
+                _highScore = Score;
+            }
+
             SetCoin();
             SetLevel();
-            SetScore();
+            SetScore(playerScoreText, Score);
             SetLive();
             Pause();
         }
 
-        private void SetScore()
+        private void SetScore(TextMeshProUGUI scoreText, int score)
         {
-            switch (Score.ToString().Length)
+            switch (score.ToString().Length)
             {
                 case 0:
-                    playerScoreText.SetText("000000");
+                    scoreText.SetText("000000");
                     break;
                 case 3:
-                    playerScoreText.SetText($"000{Score}");
+                    scoreText.SetText($"000{score}");
                     break;
                 case 4:
-                    playerScoreText.SetText($"00{Score}");
+                    scoreText.SetText($"00{score}");
                     break;
                 case 5:
-                    playerScoreText.SetText($"0{Score}");
+                    scoreText.SetText($"0{score}");
                     break;
                 case 6:
-                    playerScoreText.SetText($"{Score}");
+                    scoreText.SetText($"{score}");
                     break;
             }
         }

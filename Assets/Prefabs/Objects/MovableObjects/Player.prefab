@@ -315,9 +315,12 @@ MonoBehaviour:
   jumpForce: 795
   smoothTime: 0.6
   isDead: 0
+  _isEatable: 0
   isWalkingToCastle: 0
   isInCastle: 0
   isStopTime: 0
+  isInvulnerable: 0
+  isInvincible: 0
   playerSprite: {fileID: 8267366575525175697}
   bigPlayer: {fileID: 7302171109682054432}
   bigPlayerCollider: {fileID: 3713772949689718507}

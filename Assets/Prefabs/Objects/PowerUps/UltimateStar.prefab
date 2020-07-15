@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6747027948832674786}
   - component: {fileID: 167022748471045723}
   - component: {fileID: -7186665741036037580}
+  - component: {fileID: 4056491642269009689}
   m_Layer: 0
   m_Name: UltimateStar
   m_TagString: UltimateStar
@@ -46,7 +47,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.14866543}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -57,7 +58,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9376452, y: 0.70266914}
   m_EdgeRadius: 0
 --- !u!114 &-7186665741036037580
 MonoBehaviour:
@@ -71,10 +72,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06409c95a3c9640e981aeffba3bd4d97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedRight: 0
+  speedRight: 5
   speedUp: 1
   isMoving: 0
   isTouchByPlayer: 0
+--- !u!95 &4056491642269009689
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808268714180075982}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 66ab1ea54141b4c5d89c19443a560aa8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5186526456650770315
 GameObject:
   m_ObjectHideFlags: 0

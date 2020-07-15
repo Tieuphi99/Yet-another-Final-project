@@ -306,6 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 6691854002660372949}
+  hitByPlayerSound: {fileID: 8300000, guid: 15efbd042ff6e428b945e012166a7782, type: 3}
 --- !u!1 &6691854003950615156
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,6 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 6691854002660372949}
+  hitPlayerSound: {fileID: 8300000, guid: b95f4a2385c8e4b838ad7f8208f3f5e1, type: 3}
 --- !u!61 &2901405652045154894
 BoxCollider2D:
   m_ObjectHideFlags: 0

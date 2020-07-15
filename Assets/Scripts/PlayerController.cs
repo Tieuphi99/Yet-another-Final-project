@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private AudioSource _playerAudio;
 
     public AudioClip jumpSound;
+    public AudioClip jumpBigSound;
     public AudioClip stageClearSound;
     public AudioClip flagPoleSound;
     
@@ -114,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && _isOnGround)
         {
-            _playerAudio.PlayOneShot(jumpSound);
+            _playerAudio.PlayOneShot(GameStatusController.IsBigPlayer ? jumpSound : jumpBigSound);
             _isOnGround = false;
             _playerAnim.SetTrigger(JumpTrig);
             _playerRb.AddForce(new Vector2(0f, jumpForce));

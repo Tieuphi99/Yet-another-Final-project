@@ -325,6 +325,7 @@ MonoBehaviour:
   smallPlayerCollider: {fileID: 1029444639882601917}
   playerCol: {fileID: 7039581929503533562}
   jumpSound: {fileID: 8300000, guid: 94f1a34e8ca8649279942acad22f108b, type: 3}
+  jumpBigSound: {fileID: 8300000, guid: 9f125e09913194dc991970e850fc89c6, type: 3}
   stageClearSound: {fileID: 8300000, guid: e961139f9086349318d17156064bb835, type: 3}
   flagPoleSound: {fileID: 8300000, guid: 60807c213729b49f692a8e664a26eda0, type: 3}
 --- !u!95 &5562541293349834303

@@ -127,8 +127,8 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: 0.00013160706, y: 0.9400662}
-  - {x: 0.00016880035, y: 0.9988204}
-  - {x: 0.00023841858, y: 0.9464514}
+  - {x: 0.00016880035, y: 0.9596946}
+  - {x: 0.00010347366, y: 0.93997544}
 --- !u!61 &2922904986936172532
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.4739135}
+  m_Offset: {x: 0, y: 0.45859015}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -153,7 +153,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.9135034}
+  m_Size: {x: 0.9, y: 0.8828567}
   m_EdgeRadius: 0.01
 --- !u!61 &7044689246503058565
 BoxCollider2D:
@@ -315,7 +315,6 @@ MonoBehaviour:
   jumpForce: 795
   smoothTime: 0.6
   isDead: 0
-  _isEatable: 0
   isWalkingToCastle: 0
   isInCastle: 0
   isStopTime: 0

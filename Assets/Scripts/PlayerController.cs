@@ -15,9 +15,10 @@ public class PlayerController : MonoBehaviour
     [Range(0, 1)] public float smoothTime = 0.6f;
     public bool isDead;
     private bool _isOnGround;
-    public bool _isEatable;
+    private bool _isEatable;
     private bool _isFinish;
     private bool _isNotHugPole;
+    private bool _isFacingRight;
     public bool isWalkingToCastle;
     public bool isInCastle;
     public bool isStopTime;
@@ -53,6 +54,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        _isFacingRight = true;
         isInvulnerable = false;
         if (GameStatusController.PlayerTag != null)
         {
@@ -148,17 +150,19 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            if (localScale.x < 0)
+            if (!_isFacingRight)
             {
-                localScale.x *= -1f;
+                transform.Rotate(0, 180, 0);
+                _isFacingRight = !_isFacingRight;
             }
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            if (localScale.x > 0)
+            if (_isFacingRight)
             {
-                localScale.x *= -1f;
+                transform.Rotate(0, 180, 0);
+                _isFacingRight = !_isFacingRight;
             }
         }
 

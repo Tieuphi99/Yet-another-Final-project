@@ -69,7 +69,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1799885043186071512, guid: 9a569984145514a2bb2802ef51df788b,
+  m_Sprite: {fileID: -5897484957221553376, guid: 9a569984145514a2bb2802ef51df788b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 140782559582041882}
   - component: {fileID: 4392269553133641865}
   m_Layer: 0
-  m_Name: DarkGoomba
+  m_Name: CastleGoomba
   m_TagString: Goomba
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,7 +148,7 @@ Animator:
   m_GameObject: {fileID: 140782559582041889}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c2f6a1d4cf73e42079f4d1fa0bee6c40, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -175,7 +175,6 @@ MonoBehaviour:
   deadDisableCollider:
   - {fileID: 4748182353129187720}
   deadEnableCollider: {fileID: 0}
-  player: {fileID: 0}
 --- !u!1 &4354584424693637154
 GameObject:
   m_ObjectHideFlags: 0

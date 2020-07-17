@@ -9,12 +9,12 @@ namespace SystemScripts
         public GameObject liveStat;
         public GameObject gameOverPopup;
         private AudioSource _loadSceneAudio;
-        public AudioClip gameoverSound;
+        public AudioClip gameOverSound;
 
         private void Start()
         {
             _loadSceneAudio = GetComponent<AudioSource>();
-            if (GameStatusController.Live < 1)
+            if (GameStatusController.Live < 2)
             {
                 GameStatusController.IsGameOver = true;
             }
@@ -35,7 +35,7 @@ namespace SystemScripts
             {
                 liveStat.SetActive(false);
                 gameOverPopup.SetActive(true);
-                _loadSceneAudio.PlayOneShot(gameoverSound);
+                _loadSceneAudio.PlayOneShot(gameOverSound);
                 StartCoroutine(StartingScene());
             }
         }

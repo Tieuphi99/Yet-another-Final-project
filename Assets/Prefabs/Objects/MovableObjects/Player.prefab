@@ -312,7 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 410
   slideDownSpeed: 5
-  jumpForce: 1025
+  jumpForce: 1030
   smoothTime: 0.6
   isDead: 0
   isWalkingToCastle: 0

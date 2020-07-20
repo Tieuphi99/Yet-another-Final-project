@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 307902519624895073}
   - component: {fileID: 5261034934649658277}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShellCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 7723429233678428666}
   - component: {fileID: 5018491418100486845}
   - component: {fileID: 3996239121361480241}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Koopa
   m_TagString: Koopa
   m_Icon: {fileID: 0}
@@ -153,7 +153,6 @@ MonoBehaviour:
   - {fileID: 6691854003287052686}
   - {fileID: 2901405652045154894}
   deadEnableCollider: {fileID: 5261034934649658277}
-  player: {fileID: 0}
 --- !u!1 &6691854003030629370
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6691854003030629369}
   - component: {fileID: 6691854003030629368}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Animations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +246,7 @@ GameObject:
   - component: {fileID: 6691854003287052686}
   - component: {fileID: 6691854003287052687}
   - component: {fileID: 8207926574261966711}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head Collider
   m_TagString: EnemyHead
   m_Icon: {fileID: 0}
@@ -416,7 +415,7 @@ GameObject:
   - component: {fileID: 6691854003950615162}
   - component: {fileID: 2901405652045154894}
   - component: {fileID: 302746352803135154}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body Collider
   m_TagString: EnemyBody
   m_Icon: {fileID: 0}

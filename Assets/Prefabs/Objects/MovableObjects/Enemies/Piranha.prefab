@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5237369944808355366}
   - component: {fileID: 7996807811100556525}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Piranha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 9002000606897054710}
   - component: {fileID: 5564149405089896359}
   - component: {fileID: 5904456640054942967}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Animations
   m_TagString: Untagged
   m_Icon: {fileID: 0}

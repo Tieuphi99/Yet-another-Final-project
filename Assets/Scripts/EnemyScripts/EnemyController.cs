@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
 namespace EnemyScripts
@@ -60,17 +59,18 @@ namespace EnemyScripts
                 !other.gameObject.CompareTag("BigPlayer"))
             {
                 speed = -speed;
+                if (speed < 0)
+                {
+                    localScale.x *= -1f;
+                }
+                else
+                {
+                    localScale.x *= -1f;
+                }
                 Move();
             }
 
-            if (CompareTag("Koopa") && speed < 0)
-            {
-                localScale.x *= -1f;
-            }
-            else
-            {
-                localScale.x *= -1f;
-            }
+            transform.localScale = localScale;
         }
 
         IEnumerator Destroy()

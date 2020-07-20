@@ -499,7 +499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   liveStat: {fileID: 8337659451409723476}
   gameOverPopup: {fileID: 8337659451409723475}
-  gameoverSound: {fileID: 8300000, guid: 7f06caaf3f4b74f2cb0f4c207fa1f724, type: 3}
+  gameOverSound: {fileID: 8300000, guid: 7f06caaf3f4b74f2cb0f4c207fa1f724, type: 3}
 --- !u!82 &8337659451409723479
 AudioSource:
   m_ObjectHideFlags: 0

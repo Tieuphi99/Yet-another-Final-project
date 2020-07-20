@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 140782557626579478}
   - component: {fileID: 140782557626579479}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Animations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 140782559582041886}
   - component: {fileID: 140782559582041882}
   - component: {fileID: 4392269553133641865}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Goomba
   m_TagString: Goomba
   m_Icon: {fileID: 0}
@@ -175,7 +175,6 @@ MonoBehaviour:
   deadDisableCollider:
   - {fileID: 4748182353129187720}
   deadEnableCollider: {fileID: 0}
-  player: {fileID: 0}
 --- !u!1 &4354584424693637154
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +187,7 @@ GameObject:
   - component: {fileID: 4748182353129187720}
   - component: {fileID: 6630738012960786380}
   - component: {fileID: 6466067192330799844}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head Collider
   m_TagString: EnemyHead
   m_Icon: {fileID: 0}
@@ -357,7 +356,7 @@ GameObject:
   - component: {fileID: 6128006002240828193}
   - component: {fileID: 3061857085521458329}
   - component: {fileID: 2190348230657553707}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body Collider
   m_TagString: EnemyBody
   m_Icon: {fileID: 0}

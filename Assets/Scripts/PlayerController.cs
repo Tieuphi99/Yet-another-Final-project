@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using SystemScripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -131,13 +130,12 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        Vector3 localScale = transform.localScale;
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         Vector2 playerVelocity = _playerRb.velocity;
         Vector3 targetVelocity = new Vector2(horizontalInput * speed * Time.fixedDeltaTime, playerVelocity.y);
         _playerRb.velocity = Vector3.SmoothDamp(playerVelocity, targetVelocity, ref _velocity, smoothTime);
 
-        if (Input.GetKeyDown(KeyCode.Space) && _isOnGround)
+        if (Input.GetKeyDown(KeyCode.A) && _isOnGround)
         {
             _playerAudio.PlayOneShot(GameStatusController.IsBigPlayer ? jumpSound : jumpBigSound);
             _isOnGround = false;
@@ -165,8 +163,6 @@ public class PlayerController : MonoBehaviour
                 _isFacingRight = !_isFacingRight;
             }
         }
-
-        transform.localScale = localScale;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -221,6 +217,20 @@ public class PlayerController : MonoBehaviour
         {
             TurnIntoBigPlayer();
             // _isEatable = false;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        // Debug.Log(other.gameObject.tag);
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Pipe") ||
+            other.gameObject.CompareTag("Brick") ||
+            other.gameObject.CompareTag("Stone"))
+        {
+            _isOnGround = false;
+            _playerAnim.SetBool(IdleB, false);
+            _playerAnim.SetBool(WalkB, false);
+            _playerAnim.SetBool(RunB, false);
         }
     }
 

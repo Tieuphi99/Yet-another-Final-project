@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4510656188418952238}
   - component: {fileID: 7079377461122702781}
   - component: {fileID: 558512701000548605}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SmallMarioCollider
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -56,8 +56,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.68274486, y: 0.80947125}
-  m_EdgeRadius: 0.04
+  m_Size: {x: 0.7041763, y: 0.8734043}
+  m_EdgeRadius: 0.02
 --- !u!68 &558512701000548605
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 7893666250894920285}
   - component: {fileID: 2922904986936172532}
   - component: {fileID: 7044689246503058565}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BigMarioCollider
   m_TagString: BigPlayer
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5562541293077248256}
   - component: {fileID: 5562541293077248271}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SmallMarioAnimations
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 5562541293349834303}
   - component: {fileID: 5562541293349834301}
   - component: {fileID: 7430666573908258158}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 410
   slideDownSpeed: 5
-  jumpForce: 795
+  jumpForce: 1025
   smoothTime: 0.6
   isDead: 0
   isWalkingToCastle: 0
@@ -364,7 +364,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 5
   m_Material: {fileID: 6200000, guid: 57f83e6efad8c40c99407152959a15c1, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -475,7 +475,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 14817616037679195}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5054532408108372261}
   - component: {fileID: 1339337044728742395}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BigMarioAnimations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -588,7 +588,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 903607213494254244}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Animations
   m_TagString: Untagged
   m_Icon: {fileID: 0}

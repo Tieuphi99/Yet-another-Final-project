@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 4875449431937104817}
   - component: {fileID: 2882392713295830518}
   m_Layer: 0
-  m_Name: LightStone
+  m_Name: CastleStone
   m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -32,6 +32,7 @@ namespace SystemScripts
             {
                 StopEnemiesFromMovingWhenPlayerDie();
                 SetActiveEnemiesWhenSeePlayer();
+                DestroyEnemiesOutOfBound();
                 UpdateTime();
                 if (player.isStopTime)
                 {
@@ -46,15 +47,15 @@ namespace SystemScripts
             if (!GameStatusController.IsDead) return;
             for (var i = 0; i < enemyControllers.Count; i++)
             {
-                if (enemyControllers[i] == null)
-                {
-                    enemyControllers.Remove(enemyControllers[i]);
-                }
-                else
+                if (enemyControllers[i] != null)
                 {
                     enemyControllers[i].speed = 0;
                     enemyControllers[i].gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                     enemyControllers[i].gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+                }
+                else
+                {
+                    enemyControllers.Remove(enemyControllers[i]);
                 }
             }
         }
@@ -68,6 +69,24 @@ namespace SystemScripts
                     if (enemyGameObjects[i].transform.position.x - player.transform.position.x < 12)
                     {
                         enemyGameObjects[i].SetActive(true);
+                    }
+                }
+                else
+                {
+                    enemyGameObjects.Remove(enemyGameObjects[i]);
+                }
+            }
+        }
+
+        private void DestroyEnemiesOutOfBound()
+        {
+            for (var i = 0; i < enemyGameObjects.Count; i++)
+            {
+                if (enemyGameObjects[i] != null)
+                {
+                    if (enemyGameObjects[i].transform.position.x - player.transform.position.x < -15)
+                    {
+                        Destroy(enemyGameObjects[i]);
                     }
                 }
                 else

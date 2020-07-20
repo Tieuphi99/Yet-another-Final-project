@@ -21,12 +21,12 @@ namespace EnemyScripts
             _enemyAnim = GetComponent<Animator>();
         }
 
-        void Update()
+        private void Update()
         {
             Move();
         }
 
-        void Move()
+        private void Move()
         {
             transform.Translate(speed * Time.deltaTime * Vector3.left);
         }

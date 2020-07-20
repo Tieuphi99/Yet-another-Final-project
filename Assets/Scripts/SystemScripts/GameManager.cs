@@ -30,9 +30,8 @@ namespace SystemScripts
         {
             if (player != null)
             {
-                StopGoombaMovingWhenPlayerDie();
-                SetActiveGoombaWhenSeePlayer();
-                // UpdateWhenKillGoomba();
+                StopEnemiesFromMovingWhenPlayerDie();
+                SetActiveEnemiesWhenSeePlayer();
                 UpdateTime();
                 if (player.isStopTime)
                 {
@@ -42,7 +41,7 @@ namespace SystemScripts
             }
         }
 
-        private void StopGoombaMovingWhenPlayerDie()
+        private void StopEnemiesFromMovingWhenPlayerDie()
         {
             if (!GameStatusController.IsDead) return;
             for (var i = 0; i < enemyControllers.Count; i++)
@@ -60,7 +59,7 @@ namespace SystemScripts
             }
         }
 
-        private void SetActiveGoombaWhenSeePlayer()
+        private void SetActiveEnemiesWhenSeePlayer()
         {
             for (var i = 0; i < enemyGameObjects.Count; i++)
             {
@@ -121,7 +120,7 @@ namespace SystemScripts
             }
         }
 
-        private IEnumerator NextLevel()
+        private static IEnumerator NextLevel()
         {
             yield return new WaitForSeconds(3);
             SceneManager.LoadScene(1);

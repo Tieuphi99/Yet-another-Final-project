@@ -77,6 +77,7 @@ public class PowerUpsController : MonoBehaviour
         {
             GameStatusController.CollectedCoin += 1;
             GameStatusController.Score += 200;
+            GameStatusController.IsEnemyDieOrCoinEat = true;
             Destroy(gameObject);
         }
 
@@ -105,12 +106,14 @@ public class PowerUpsController : MonoBehaviour
         if (other.CompareTag("Player") && _isEatable)
         {
             GameStatusController.Score += 1000;
+            GameStatusController.IsPowerUpEat = true;
             _isEatable = false;
             Destroy(gameObject);
         }
         else if (other.CompareTag("BigPlayer") && _isEatable)
         {
             GameStatusController.Score += 1000;
+            GameStatusController.IsPowerUpEat = true;
             _isEatable = false;
             Destroy(gameObject);
         }

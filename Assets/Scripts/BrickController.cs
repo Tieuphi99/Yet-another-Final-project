@@ -56,6 +56,7 @@ public class BrickController : MonoBehaviour
                 specialBrickHealth -= 1;
                 GameStatusController.CollectedCoin += 1;
                 GameStatusController.Score += 200;
+                GameStatusController.IsEnemyDieOrCoinEat = true;
                 isTouchByPlayer = true;
                 _brickAnim.SetBool(TouchB, isTouchByPlayer);
             }

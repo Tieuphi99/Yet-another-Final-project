@@ -20,6 +20,7 @@ public class CoinBrickController : MonoBehaviour
             if (isNotSpecialBrick)
             {
                 GameStatusController.Score += 200;
+                GameStatusController.IsEnemyDieOrCoinEat = true;
                 GameStatusController.CollectedCoin += 1;
             }
 

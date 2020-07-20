@@ -20,6 +20,7 @@ namespace EnemyScripts
         {
             if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BigPlayer"))
             {
+                GameStatusController.IsEnemyDieOrCoinEat = true;
                 _enemyAudio.PlayOneShot(hitByPlayerSound);
                 GameStatusController.Score += 200;
                 other.rigidbody.AddForce(new Vector2(0f, _enemyController.pushForce));

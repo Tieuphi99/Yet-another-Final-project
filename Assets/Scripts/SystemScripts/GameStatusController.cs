@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,9 +13,12 @@ namespace SystemScripts
         public TextMeshProUGUI levelText;
         public TextMeshProUGUI secondsText;
         public TextMeshProUGUI livesText;
+        public GameObject score200Prefab;
+        public GameObject score1000Prefab;
         public GameObject pausePopup;
         public GameObject instructionPopup;
         public GameObject creditPopup;
+        public Transform scoreParent;
         private AudioSource _gameStatusAudio;
         public AudioClip pauseSound;
 
@@ -29,6 +33,8 @@ namespace SystemScripts
         public static bool IsGameOver;
         public static bool IsBigPlayer;
         public static string PlayerTag;
+        public static bool IsEnemyDieOrCoinEat;
+        public static bool IsPowerUpEat;
         private float _second;
 
         private void Awake()
@@ -40,6 +46,18 @@ namespace SystemScripts
 
         private void Update()
         {
+            if (IsEnemyDieOrCoinEat)
+            {
+                IsEnemyDieOrCoinEat = false;
+                UpdateScorePopup(score200Prefab);
+            }
+
+            if (IsPowerUpEat)
+            {
+                IsPowerUpEat = false;
+                UpdateScorePopup(score1000Prefab);
+            }
+
             if (Score > _highScore)
             {
                 _highScore = Score;
@@ -172,6 +190,18 @@ namespace SystemScripts
         public void ExitGame()
         {
             SceneManager.LoadScene(0);
+        }
+
+        private void UpdateScorePopup(GameObject scorePrefab)
+        {
+            GameObject score = Instantiate(scorePrefab, scoreParent);
+            StartCoroutine(DestroyScorePrefab(score));
+        }
+
+        private IEnumerator DestroyScorePrefab(GameObject prefab)
+        {
+            yield return new WaitForSeconds(1);
+            Destroy(prefab);
         }
     }
 }

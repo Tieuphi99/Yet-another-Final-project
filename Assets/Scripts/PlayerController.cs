@@ -84,6 +84,7 @@ public class PlayerController : MonoBehaviour
 
         if (isInvulnerable)
         {
+            Physics2D.IgnoreLayerCollision(8, 9);
             StartCoroutine(BeVulnerable());
         }
 
@@ -313,6 +314,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator BeVulnerable()
     {
         yield return new WaitForSeconds(2);
+        Physics2D.IgnoreLayerCollision(8, 9, false);
         isInvulnerable = false;
     }
 

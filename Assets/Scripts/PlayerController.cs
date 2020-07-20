@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     private static readonly int UltimateB = Animator.StringToHash("Ultimate_b");
     private static readonly int UltimateDurationF = Animator.StringToHash("UltimateDuration_f");
 
+
     void Awake()
     {
         _isFacingRight = true;
@@ -136,6 +137,8 @@ public class PlayerController : MonoBehaviour
         Vector3 targetVelocity = new Vector2(horizontalInput * speed * Time.fixedDeltaTime, playerVelocity.y);
         _playerRb.velocity = Vector3.SmoothDamp(playerVelocity, targetVelocity, ref _velocity, smoothTime);
 
+        DenyMidAirJump();
+
         if (Input.GetKeyDown(KeyCode.A) && _isOnGround)
         {
             _playerAudio.PlayOneShot(GameStatusController.IsBigPlayer ? jumpSound : jumpBigSound);
@@ -218,20 +221,6 @@ public class PlayerController : MonoBehaviour
         {
             TurnIntoBigPlayer();
             // _isEatable = false;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        // Debug.Log(other.gameObject.tag);
-        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Pipe") ||
-            other.gameObject.CompareTag("Brick") ||
-            other.gameObject.CompareTag("Stone"))
-        {
-            _isOnGround = false;
-            _playerAnim.SetBool(IdleB, false);
-            _playerAnim.SetBool(WalkB, false);
-            _playerAnim.SetBool(RunB, false);
         }
     }
 
@@ -323,5 +312,23 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(2);
         isInvincible = false;
         _playerAnim.SetBool(UltimateB, isInvincible);
+    }
+
+    private void DenyMidAirJump()
+    {
+        if (_playerRb.velocity.y > 0 || _playerRb.velocity.y < 0)
+        {
+            _isOnGround = false;
+            _playerAnim.SetBool(IdleB, false);
+            _playerAnim.SetBool(WalkB, false);
+            _playerAnim.SetBool(RunB, false);
+        }
+        else
+        {
+            _isOnGround = true;
+            _playerAnim.SetBool(IdleB, true);
+            _playerAnim.SetBool(WalkB, true);
+            _playerAnim.SetBool(RunB, true);
+        }
     }
 }

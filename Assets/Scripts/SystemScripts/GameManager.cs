@@ -14,12 +14,15 @@ namespace SystemScripts
         public List<GameObject> enemyGameObjects;
         public GameObject invisibleBrick;
         public GameObject invisiblePowerUp;
+        public GameObject stairwayPrefab;
+        public Transform stairwayParent;
 
         public float time = 400;
         public float finalTime;
 
         private void Awake()
         {
+            InvokeRepeating(nameof(SpawnStairway), 0, 3);
             if (gameStatusController != null)
             {
                 gameStatusController.SetTime(time);
@@ -143,6 +146,11 @@ namespace SystemScripts
         {
             yield return new WaitForSeconds(3);
             SceneManager.LoadScene(1);
+        }
+
+        private void SpawnStairway()
+        {
+            Instantiate(stairwayPrefab, stairwayParent);
         }
     }
 }

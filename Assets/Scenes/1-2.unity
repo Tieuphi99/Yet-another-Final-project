@@ -16236,10 +16236,10 @@ Transform:
   - {fileID: 1051213716}
   - {fileID: 2067412750}
   - {fileID: 1911591437}
-  - {fileID: 620346203}
   - {fileID: 460675636}
-  - {fileID: 992529918}
   - {fileID: 1965581683}
+  - {fileID: 620346203}
+  - {fileID: 992529918}
   m_Father: {fileID: 1617074348}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25543,6 +25543,11 @@ PrefabInstance:
       propertyPath: m_UsedByComposite
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8523426447889179092, guid: e582326e76b6e49d2bb496ca6b4fac92,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8768637447044340582, guid: e582326e76b6e49d2bb496ca6b4fac92,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25613,7 +25618,8 @@ PrefabInstance:
       propertyPath: m_SpriteTileMode
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8523426447889179092, guid: e582326e76b6e49d2bb496ca6b4fac92, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e582326e76b6e49d2bb496ca6b4fac92, type: 3}
 --- !u!4 &2017266072 stripped
 Transform:

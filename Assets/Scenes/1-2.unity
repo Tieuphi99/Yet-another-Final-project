@@ -17316,6 +17316,11 @@ PrefabInstance:
       propertyPath: enemyGameObjects.Array.data[16]
       value: 
       objectReference: {fileID: 464368997}
+    - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
+        type: 3}
+      propertyPath: isStairLevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1961857431134350412, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: gameStatusController

@@ -17,13 +17,18 @@ namespace SystemScripts
         public GameObject stairwayPrefab;
         public Transform stairwayDownParent;
         public Transform stairwayUpParent;
+        public bool isStairLevel;
 
         public float time = 400;
         public float finalTime;
 
         private void Awake()
         {
-            InvokeRepeating(nameof(SpawnStairway), 0, 3);
+            if (isStairLevel)
+            {
+                InvokeRepeating(nameof(SpawnStairway), 0, 3);
+            }
+
             if (gameStatusController != null)
             {
                 gameStatusController.SetTime(time);

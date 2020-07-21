@@ -330,6 +330,7 @@ MonoBehaviour:
   jumpBigSound: {fileID: 8300000, guid: 9f125e09913194dc991970e850fc89c6, type: 3}
   stageClearSound: {fileID: 8300000, guid: e961139f9086349318d17156064bb835, type: 3}
   flagPoleSound: {fileID: 8300000, guid: 60807c213729b49f692a8e664a26eda0, type: 3}
+  pipeSound: {fileID: 8300000, guid: ceae4130f96724ca1b89b5c049a7d4b8, type: 3}
 --- !u!95 &5562541293349834303
 Animator:
   serializedVersion: 3

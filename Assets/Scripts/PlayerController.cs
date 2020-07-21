@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpBigSound;
     public AudioClip stageClearSound;
     public AudioClip flagPoleSound;
+    public AudioClip pipeSound;
 
     private static readonly int IdleB = Animator.StringToHash("Idle_b");
     private static readonly int WalkB = Animator.StringToHash("Walk_b");
@@ -80,6 +81,7 @@ public class PlayerController : MonoBehaviour
         {
             _invincibleTime = Time.time - _startInvincible;
             _playerAnim.SetFloat(UltimateDurationF, _invincibleTime);
+            Physics2D.IgnoreLayerCollision(8, 9);
             if (Time.time - _startInvincible > 10)
             {
                 StartCoroutine(BeNormal());
@@ -134,6 +136,7 @@ public class PlayerController : MonoBehaviour
 
         if (_isGoingDownPipeAble)
         {
+            _playerAudio.PlayOneShot(pipeSound);
             if (CompareTag("Player"))
             {
                 smallPlayerCollider.SetActive(false);
@@ -370,6 +373,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(2);
         isInvincible = false;
         _playerAnim.SetBool(UltimateB, isInvincible);
+        Physics2D.IgnoreLayerCollision(8, 9, false);
     }
 
     private IEnumerator StopGoingDownPipe()
@@ -377,5 +381,8 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         _isAboveSpecialPipe = false;
         _isGoingDownPipeAble = false;
+        Debug.Log(GameStatusController.CurrentLevel);
+        SceneManager.LoadScene(GameStatusController.CurrentLevel);
+        GameStatusController.CurrentLevel += 1;
     }
 }

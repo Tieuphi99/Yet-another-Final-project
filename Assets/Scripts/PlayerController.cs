@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
         {
             _invincibleTime = Time.time - _startInvincible;
             _playerAnim.SetFloat(UltimateDurationF, _invincibleTime);
-            Physics2D.IgnoreLayerCollision(8, 9);
+            Physics2D.IgnoreLayerCollision(8, 9, true);
             if (Time.time - _startInvincible > 10)
             {
                 StartCoroutine(BeNormal());
@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
         if (isInvulnerable)
         {
-            Physics2D.IgnoreLayerCollision(8, 9);
+            Physics2D.IgnoreLayerCollision(8, 9, true);
             StartCoroutine(BeVulnerable());
         }
 
@@ -209,7 +209,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Pipe") ||
             other.gameObject.CompareTag("Brick") || other.gameObject.CompareTag("Stone") ||
             other.gameObject.CompareTag("SpecialPipe"))
@@ -252,13 +251,13 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("1UpMushroom") && _isEatable)
         {
             GameStatusController.Live += 1;
-            // _isEatable = false;
+            _isEatable = false;
         }
 
         if (other.gameObject.CompareTag("BigMushroom") && _isEatable)
         {
             TurnIntoBigPlayer();
-            // _isEatable = false;
+            _isEatable = false;
         }
 
         if (other.gameObject.CompareTag("SpecialPipe"))
@@ -269,18 +268,20 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("FireFlower") && CompareTag("Player") && _isEatable)
-        {
-            TurnIntoBigPlayer();
-            // _isEatable = false;
-        }
-
         if (other.gameObject.CompareTag("UltimateStar") && _isEatable)
         {
+            Debug.Log("ATE");
+            tag = "UltimatePlayer";
             isInvincible = true;
             _playerAnim.SetBool(UltimateB, isInvincible);
             _startInvincible = Time.time;
-            // _isEatable = false;
+            _isEatable = false;
+        }
+
+        if (other.gameObject.CompareTag("FireFlower") && CompareTag("Player") && _isEatable)
+        {
+            TurnIntoBigPlayer();
+            _isEatable = false;
         }
     }
 
@@ -371,6 +372,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator BeNormal()
     {
         yield return new WaitForSeconds(2);
+        tag = GameStatusController.PlayerTag;
         isInvincible = false;
         _playerAnim.SetBool(UltimateB, isInvincible);
         Physics2D.IgnoreLayerCollision(8, 9, false);
@@ -381,7 +383,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         _isAboveSpecialPipe = false;
         _isGoingDownPipeAble = false;
-        Debug.Log(GameStatusController.CurrentLevel);
         SceneManager.LoadScene(GameStatusController.CurrentLevel);
         GameStatusController.CurrentLevel += 1;
     }

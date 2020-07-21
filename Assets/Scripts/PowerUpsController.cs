@@ -15,6 +15,7 @@ public class PowerUpsController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        Physics2D.IgnoreLayerCollision(9, 10, true);
         _firstYPos = transform.position.y;
     }
 
@@ -50,7 +51,7 @@ public class PowerUpsController : MonoBehaviour
             GetComponent<BoxCollider2D>().isTrigger = true;
         }
 
-        if (other.gameObject.CompareTag("Stone") || other.gameObject.CompareTag("Pipe"))
+        if (other.gameObject.CompareTag("Stone") || other.gameObject.CompareTag("Pipe") || other.gameObject.CompareTag("Untagged"))
         {
             speedRight = -speedRight;
         }

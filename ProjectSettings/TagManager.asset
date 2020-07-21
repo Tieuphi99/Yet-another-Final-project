@@ -27,6 +27,7 @@ TagManager:
   - Goomba
   - Coin
   - SpecialPipe
+  - UltimatePlayer
   layers:
   - Default
   - TransparentFX
@@ -38,7 +39,7 @@ TagManager:
   - 
   - Player
   - Enemy
-  - 
+  - PowerUps
   - 
   - 
   - 

@@ -12285,6 +12285,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BrownBrick (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5407727845453544337, guid: 5f184558bafb449e99502833c7812681,
+        type: 3}
+      propertyPath: m_TagString
+      value: PowerBrick
+      objectReference: {fileID: 0}
     - target: {fileID: 8523426447889179092, guid: 5f184558bafb449e99502833c7812681,
         type: 3}
       propertyPath: isSpecialBrick
@@ -15157,6 +15162,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BrownBrick (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407727845453544337, guid: 5f184558bafb449e99502833c7812681,
+        type: 3}
+      propertyPath: m_TagString
+      value: PowerBrick
       objectReference: {fileID: 0}
     - target: {fileID: 8523426447889179092, guid: 5f184558bafb449e99502833c7812681,
         type: 3}

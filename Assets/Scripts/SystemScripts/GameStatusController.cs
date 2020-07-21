@@ -165,6 +165,7 @@ namespace SystemScripts
             Live = 3;
             Score = 0;
             CollectedCoin = 0;
+            PlayerTag = "Player";
         }
 
         public void OpenInstructionPopup()

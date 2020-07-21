@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 167022748471045723}
   - component: {fileID: -7186665741036037580}
   - component: {fileID: 4056491642269009689}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UltimateStar
   m_TagString: UltimateStar
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3683928610493097411}
   - component: {fileID: 1785794670479441831}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Animations
   m_TagString: Untagged
   m_Icon: {fileID: 0}

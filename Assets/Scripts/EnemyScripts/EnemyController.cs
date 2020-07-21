@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using SystemScripts;
 using UnityEngine;
 
 namespace EnemyScripts
@@ -7,7 +8,7 @@ namespace EnemyScripts
     public class EnemyController : MonoBehaviour
     {
         public int speed = 2;
-        public float pushForce = 400;
+        public float pushForce = 500;
         public bool isTouchByPlayer;
 
         private Animator _enemyAnim;
@@ -34,6 +35,7 @@ namespace EnemyScripts
         public void Die()
         {
             isTouchByPlayer = true;
+            GameStatusController.Score += 200;
             for (var i = 0; i < deadDisableCollider.Count; i++)
             {
                 deadDisableCollider[i].enabled = false;

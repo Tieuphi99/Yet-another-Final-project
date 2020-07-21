@@ -3844,6 +3844,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DarkBrick
       objectReference: {fileID: 0}
+    - target: {fileID: 5407727845453544337, guid: e582326e76b6e49d2bb496ca6b4fac92,
+        type: 3}
+      propertyPath: m_TagString
+      value: PowerBrick
+      objectReference: {fileID: 0}
     - target: {fileID: 7861713907995647352, guid: e582326e76b6e49d2bb496ca6b4fac92,
         type: 3}
       propertyPath: m_IsActive

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using EnemyScripts;
 using UnityEngine;
@@ -43,6 +44,24 @@ namespace SystemScripts
                 SetActiveEnemiesWhenSeePlayer();
                 DestroyEnemiesOutOfBound();
                 UpdateTime();
+                // if (player.CompareTag("UltimatePlayer"))
+                // {
+                //     for (var i = 0; i < enemyGameObjects.Count; i++)
+                //     {
+                //         if (Mathf.RoundToInt(enemyGameObjects[i].transform.position.x - player.transform.position.x) ==
+                //             0)
+                //         {
+                //             GameStatusController.IsEnemyDieOrCoinEat = true;
+                //             enemyGameObjects[i].GetComponent<EnemyController>().Die();
+                //             enemyGameObjects.Remove(enemyGameObjects[i]);
+                //         }
+                //         else
+                //         {
+                //             enemyGameObjects.Remove(enemyGameObjects[i]);
+                //         }
+                //     }
+                // }
+
                 if (player.isStopTime)
                 {
                     finalTime = time;

@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  pushForce: 400
+  pushForce: 500
   isTouchByPlayer: 0
   deadDisableCollider:
   - {fileID: 6691854003287052686}

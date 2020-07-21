@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6229253077460496972}
   - component: {fileID: 7360182447178008087}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Animations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4097749100287180029}
   - component: {fileID: -4031936410014476022}
   - component: {fileID: 3185130248216894993}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireFlower
   m_TagString: FireFlower
   m_Icon: {fileID: 0}

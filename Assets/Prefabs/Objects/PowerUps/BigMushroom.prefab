@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3857619475592349346}
   - component: {fileID: 1097210389796796164}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Animations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 506695405501686187}
   - component: {fileID: 8669041329672450476}
   - component: {fileID: 4510130335782577428}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BigMushroom
   m_TagString: BigMushroom
   m_Icon: {fileID: 0}

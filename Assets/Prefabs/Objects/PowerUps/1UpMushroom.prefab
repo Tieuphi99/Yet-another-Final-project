@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4252036201449851247}
   - component: {fileID: -1328181003328150232}
   - component: {fileID: 28086342716916783}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 1UpMushroom
   m_TagString: 1UpMushroom
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5271499134444078771}
   - component: {fileID: 7589679342924074448}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Animations
   m_TagString: Untagged
   m_Icon: {fileID: 0}

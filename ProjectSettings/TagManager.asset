@@ -26,6 +26,7 @@ TagManager:
   - Koopa
   - Goomba
   - Coin
+  - SpecialPipe
   layers:
   - Default
   - TransparentFX

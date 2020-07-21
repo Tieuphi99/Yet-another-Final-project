@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using SystemScripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private bool _isFinish;
     private bool _isNotHugPole;
     private bool _isFacingRight;
+    private bool _isGoingDownPipeAble;
+    private bool _isAboveSpecialPipe;
     public bool isWalkingToCastle;
     public bool isInCastle;
     public bool isStopTime;
@@ -128,6 +131,21 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        if (_isGoingDownPipeAble)
+        {
+            if (CompareTag("Player"))
+            {
+                smallPlayerCollider.SetActive(false);
+            }
+            else if (CompareTag("BigPlayer"))
+            {
+                bigPlayerCollider.SetActive(false);
+            }
+
+            _playerRb.isKinematic = true;
+            transform.Translate(slideDownSpeed / 2.5f * Time.deltaTime * Vector3.down);
+        }
     }
 
     void MovePlayer()
@@ -178,14 +196,20 @@ public class PlayerController : MonoBehaviour
                 _isFacingRight = !_isFacingRight;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow) && _isAboveSpecialPipe)
+        {
+            _isGoingDownPipeAble = true;
+            StartCoroutine(StopGoingDownPipe());
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        // Debug.Log(other.gameObject.tag);
+        Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Pipe") ||
-            other.gameObject.CompareTag("Brick") ||
-            other.gameObject.CompareTag("Stone"))
+            other.gameObject.CompareTag("Brick") || other.gameObject.CompareTag("Stone") ||
+            other.gameObject.CompareTag("SpecialPipe"))
         {
             _isOnGround = true;
             _playerAnim.SetBool(IdleB, true);
@@ -232,6 +256,11 @@ public class PlayerController : MonoBehaviour
         {
             TurnIntoBigPlayer();
             // _isEatable = false;
+        }
+
+        if (other.gameObject.CompareTag("SpecialPipe"))
+        {
+            _isAboveSpecialPipe = true;
         }
     }
 
@@ -281,6 +310,24 @@ public class PlayerController : MonoBehaviour
         smallPlayerCollider.SetActive(!GameStatusController.IsBigPlayer);
     }
 
+    private void DenyMidAirJump()
+    {
+        if (_playerRb.velocity.y > 0 || _playerRb.velocity.y < 0)
+        {
+            _isOnGround = false;
+            _playerAnim.SetBool(IdleB, false);
+            _playerAnim.SetBool(WalkB, false);
+            _playerAnim.SetBool(RunB, false);
+        }
+        else
+        {
+            _isOnGround = true;
+            _playerAnim.SetBool(IdleB, true);
+            _playerAnim.SetBool(WalkB, true);
+            _playerAnim.SetBool(RunB, true);
+        }
+    }
+
     private IEnumerator SetBoolEatable()
     {
         yield return new WaitForSeconds(0.5f);
@@ -325,21 +372,10 @@ public class PlayerController : MonoBehaviour
         _playerAnim.SetBool(UltimateB, isInvincible);
     }
 
-    private void DenyMidAirJump()
+    private IEnumerator StopGoingDownPipe()
     {
-        if (_playerRb.velocity.y > 0 || _playerRb.velocity.y < 0)
-        {
-            _isOnGround = false;
-            _playerAnim.SetBool(IdleB, false);
-            _playerAnim.SetBool(WalkB, false);
-            _playerAnim.SetBool(RunB, false);
-        }
-        else
-        {
-            _isOnGround = true;
-            _playerAnim.SetBool(IdleB, true);
-            _playerAnim.SetBool(WalkB, true);
-            _playerAnim.SetBool(RunB, true);
-        }
+        yield return new WaitForSeconds(1.5f);
+        _isAboveSpecialPipe = false;
+        _isGoingDownPipeAble = false;
     }
 }

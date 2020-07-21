@@ -12628,6 +12628,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1267705000}
     m_Modifications:
+    - target: {fileID: 424110316307086344, guid: c0d95d0f213a945918f12ffc053e65c7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 450659632299144653, guid: c0d95d0f213a945918f12ffc053e65c7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12683,10 +12688,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4330794020846197270, guid: c0d95d0f213a945918f12ffc053e65c7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4427911751914020206, guid: c0d95d0f213a945918f12ffc053e65c7,
         type: 3}
       propertyPath: m_Name
       value: ConnectedPipe2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4427911751914020206, guid: c0d95d0f213a945918f12ffc053e65c7,
+        type: 3}
+      propertyPath: m_TagString
+      value: SpecialPipe
+      objectReference: {fileID: 0}
+    - target: {fileID: 6848890956878028526, guid: c0d95d0f213a945918f12ffc053e65c7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9120601093337503909, guid: c0d95d0f213a945918f12ffc053e65c7,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9120601093337503909, guid: c0d95d0f213a945918f12ffc053e65c7,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0d95d0f213a945918f12ffc053e65c7, type: 3}
@@ -16003,7 +16033,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267704999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1821668949}

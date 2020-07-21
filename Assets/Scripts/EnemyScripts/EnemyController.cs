@@ -55,8 +55,7 @@ namespace EnemyScripts
         {
             Vector3 localScale = transform.localScale;
             if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Ground") &&
-                !other.gameObject.CompareTag("Brick") && !other.gameObject.CompareTag("ScreenBorder") &&
-                !other.gameObject.CompareTag("BigPlayer"))
+                !other.gameObject.CompareTag("Brick") && !other.gameObject.CompareTag("ScreenBorder"))
             {
                 speed = -speed;
                 if (speed < 0)
@@ -67,6 +66,7 @@ namespace EnemyScripts
                 {
                     localScale.x *= -1f;
                 }
+
                 Move();
             }
 

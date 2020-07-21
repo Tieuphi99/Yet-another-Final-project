@@ -143,16 +143,24 @@ namespace SystemScripts
             }
         }
 
+        private void SpawnStairway()
+        {
+            GameObject stairwayDown = Instantiate(stairwayPrefab, stairwayDownParent);
+            GameObject stairwayUp = Instantiate(stairwayPrefab, stairwayUpParent);
+            StartCoroutine(DestroyStair(stairwayDown));
+            StartCoroutine(DestroyStair(stairwayUp));
+        }
+
         private static IEnumerator NextLevel()
         {
             yield return new WaitForSeconds(3);
             SceneManager.LoadScene(1);
         }
 
-        private void SpawnStairway()
+        private IEnumerator DestroyStair(GameObject stair)
         {
-            Instantiate(stairwayPrefab, stairwayDownParent);
-            Instantiate(stairwayPrefab, stairwayUpParent);
+            yield return new WaitForSeconds(5.3f);
+            Destroy(stair);
         }
     }
 }

@@ -150,6 +150,17 @@ public class PlayerController : MonoBehaviour
             _playerAnim.SetBool(RunB, false);
         }
 
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            speed = 600;
+            jumpForce = 1160;
+        }
+        else if (Input.GetKeyUp(KeyCode.S))
+        {
+            speed = 410;
+            jumpForce = 1030;
+        }
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             if (!_isFacingRight)

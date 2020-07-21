@@ -15,7 +15,8 @@ namespace SystemScripts
         public GameObject invisibleBrick;
         public GameObject invisiblePowerUp;
         public GameObject stairwayPrefab;
-        public Transform stairwayParent;
+        public Transform stairwayDownParent;
+        public Transform stairwayUpParent;
 
         public float time = 400;
         public float finalTime;
@@ -150,7 +151,8 @@ namespace SystemScripts
 
         private void SpawnStairway()
         {
-            Instantiate(stairwayPrefab, stairwayParent);
+            Instantiate(stairwayPrefab, stairwayDownParent);
+            Instantiate(stairwayPrefab, stairwayUpParent);
         }
     }
 }

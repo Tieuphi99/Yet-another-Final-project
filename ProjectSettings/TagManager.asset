@@ -29,6 +29,7 @@ TagManager:
   - SpecialPipe
   - UltimatePlayer
   - UltimateBigPlayer
+  - KoopaShell
   layers:
   - Default
   - TransparentFX

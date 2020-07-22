@@ -55,6 +55,7 @@ namespace EnemyScripts
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            Debug.Log(other.gameObject.tag);
             Vector3 localScale = transform.localScale;
             if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Ground") &&
                 !other.gameObject.CompareTag("Brick") && !other.gameObject.CompareTag("ScreenBorder"))
@@ -73,6 +74,12 @@ namespace EnemyScripts
             }
 
             transform.localScale = localScale;
+
+            if (other.gameObject.CompareTag("KoopaShell"))
+            {
+                GameStatusController.IsEnemyDieOrCoinEat = true;
+                Destroy(gameObject);
+            }
         }
 
         IEnumerator Destroy()

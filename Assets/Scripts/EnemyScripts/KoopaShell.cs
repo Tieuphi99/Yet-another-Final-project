@@ -26,7 +26,7 @@ namespace EnemyScripts
         {
             if (_isMove)
             {
-                // Move();
+                Move();
             }
         }
 
@@ -36,7 +36,7 @@ namespace EnemyScripts
                 !other.gameObject.CompareTag("Brick") && !other.gameObject.CompareTag("ScreenBorder") &&
                 !other.gameObject.CompareTag("Goomba") && !other.gameObject.CompareTag("Koopa"))
             {
-                speed = -speed;
+                transform.Rotate(0, 180, 0);
             }
 
             if (!_isPlayerKillable)
@@ -48,7 +48,7 @@ namespace EnemyScripts
                     float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
                     _isMove = true;
                     Debug.Log(angle);
-                    if (angle > 0)
+                    if (angle < 0)
                     {
                         _isMoveRight = false;
                     }
@@ -57,7 +57,7 @@ namespace EnemyScripts
                         _isMoveRight = true;
                     }
 
-                    // _isPlayerKillable = true;
+                    _isPlayerKillable = true;
                 }
             }
             else

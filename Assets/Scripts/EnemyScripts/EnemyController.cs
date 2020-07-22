@@ -58,24 +58,23 @@ namespace EnemyScripts
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            Vector3 localScale = transform.localScale;
-            if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Ground") &&
-                !other.gameObject.CompareTag("Brick") && !other.gameObject.CompareTag("ScreenBorder"))
+            if (CompareTag("KoopaShell"))
             {
-                speed = -speed;
-                if (speed < 0)
+                if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Ground") &&
+                    !other.gameObject.CompareTag("Brick") && !other.gameObject.CompareTag("ScreenBorder") &&
+                    !other.gameObject.CompareTag("Goomba") && !other.gameObject.CompareTag("Koopa"))
                 {
-                    localScale.x *= -1f;
+                    transform.Rotate(0, 180, 0);
                 }
-                else
-                {
-                    localScale.x *= -1f;
-                }
-
-                Move();
             }
-
-            transform.localScale = localScale;
+            else
+            {
+                if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Ground") &&
+                    !other.gameObject.CompareTag("Brick") && !other.gameObject.CompareTag("ScreenBorder"))
+                {
+                    transform.Rotate(0, 180, 0);
+                }
+            }
 
             if (other.gameObject.CompareTag("KoopaShell"))
             {

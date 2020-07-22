@@ -28,6 +28,7 @@ TagManager:
   - Coin
   - SpecialPipe
   - UltimatePlayer
+  - UltimateBigPlayer
   layers:
   - Default
   - TransparentFX

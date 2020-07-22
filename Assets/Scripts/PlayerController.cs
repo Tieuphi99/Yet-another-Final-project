@@ -271,14 +271,23 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("UltimateStar") && _isEatable)
         {
             Debug.Log("ATE");
-            tag = "UltimatePlayer";
+            if (CompareTag("Player"))
+            {
+                tag = "UltimatePlayer";
+            }
+            else
+            {
+                tag = "UltimateBigPlayer";
+            }
+
             isInvincible = true;
             _playerAnim.SetBool(UltimateB, isInvincible);
             _startInvincible = Time.time;
             _isEatable = false;
         }
 
-        if (other.gameObject.CompareTag("FireFlower") && CompareTag("Player") && _isEatable)
+        if (other.gameObject.CompareTag("FireFlower") && (CompareTag("Player") || CompareTag("UltimatePlayer")) &&
+            _isEatable)
         {
             TurnIntoBigPlayer();
             _isEatable = false;
@@ -287,8 +296,16 @@ public class PlayerController : MonoBehaviour
 
     private void TurnIntoBigPlayer()
     {
-        GameStatusController.PlayerTag = "BigPlayer";
-        tag = GameStatusController.PlayerTag;
+        if (CompareTag("Player"))
+        {
+            GameStatusController.PlayerTag = "BigPlayer";
+            tag = GameStatusController.PlayerTag;
+        }
+        else
+        {
+            tag = "UltimateBigPlayer";
+        }
+
         GameStatusController.IsBigPlayer = true;
         ChangeAnim();
     }

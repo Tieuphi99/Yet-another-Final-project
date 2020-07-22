@@ -74,7 +74,7 @@ public class PowerUpsController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (CompareTag("Coin") && (other.CompareTag("Player") || other.CompareTag("BigPlayer")))
+        if (CompareTag("Coin") && (other.CompareTag("Player") || other.CompareTag("BigPlayer") || other.CompareTag("UltimatePlayer") || other.CompareTag("UltimateBigPlayer")))
         {
             GameStatusController.CollectedCoin += 1;
             GameStatusController.Score += 200;
@@ -93,25 +93,25 @@ public class PowerUpsController : MonoBehaviour
 
     void InteractionWithPlayer(GameObject other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("UltimatePlayer"))
         {
             isTouchByPlayer = true;
             StartCoroutine(SetBoolEatable());
         }
-        else if (other.CompareTag("BigPlayer"))
+        else if (other.CompareTag("BigPlayer") || other.CompareTag("UltimateBigPlayer"))
         {
             isTouchByPlayer = true;
             StartCoroutine(SetBoolEatable());
         }
 
-        if (other.CompareTag("Player") && _isEatable)
+        if ((other.CompareTag("Player") || other.CompareTag("UltimatePlayer")) && _isEatable)
         {
             GameStatusController.Score += 1000;
             GameStatusController.IsPowerUpEat = true;
             _isEatable = false;
             Destroy(gameObject);
         }
-        else if (other.CompareTag("BigPlayer") && _isEatable)
+        else if ((other.CompareTag("BigPlayer") || other.CompareTag("UltimateBigPlayer")) && _isEatable)
         {
             GameStatusController.Score += 1000;
             GameStatusController.IsPowerUpEat = true;

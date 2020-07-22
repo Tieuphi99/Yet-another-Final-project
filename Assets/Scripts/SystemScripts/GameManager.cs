@@ -44,23 +44,30 @@ namespace SystemScripts
                 SetActiveEnemiesWhenSeePlayer();
                 DestroyEnemiesOutOfBound();
                 UpdateTime();
-                // if (player.CompareTag("UltimatePlayer"))
-                // {
-                //     for (var i = 0; i < enemyGameObjects.Count; i++)
-                //     {
-                //         if (Mathf.RoundToInt(enemyGameObjects[i].transform.position.x - player.transform.position.x) ==
-                //             0)
-                //         {
-                //             GameStatusController.IsEnemyDieOrCoinEat = true;
-                //             enemyGameObjects[i].GetComponent<EnemyController>().Die();
-                //             enemyGameObjects.Remove(enemyGameObjects[i]);
-                //         }
-                //         else
-                //         {
-                //             enemyGameObjects.Remove(enemyGameObjects[i]);
-                //         }
-                //     }
-                // }
+                if (player.CompareTag("UltimatePlayer"))
+                {
+                    for (var i = 0; i < enemyControllers.Count; i++)
+                    {
+                        if (enemyControllers[i] != null)
+                        {
+                            if (Mathf.RoundToInt(enemyControllers[i].gameObject.transform.position.x -
+                                                 player.transform.position.x) == 0 &&
+                                enemyControllers[i].gameObject.transform.position.y - player.transform.position.y <
+                                0.2f &&
+                                enemyControllers[i].gameObject.transform.position.y - player.transform.position.y >
+                                -0.2f)
+                            {
+                                GameStatusController.IsEnemyDieOrCoinEat = true;
+                                enemyControllers[i].Die();
+                                enemyControllers.Remove(enemyControllers[i]);
+                            }
+                        }
+                        else
+                        {
+                            enemyControllers.Remove(enemyControllers[i]);
+                        }
+                    }
+                }
 
                 if (player.isStopTime)
                 {

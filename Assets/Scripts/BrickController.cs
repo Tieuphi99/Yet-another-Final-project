@@ -33,13 +33,14 @@ public class BrickController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player") && !isSpecialBrick)
+        if ((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("UltimatePlayer")) && !isSpecialBrick)
         {
             isTouchByPlayer = true;
             _brickAnim.SetBool(TouchB, isTouchByPlayer);
         }
 
-        else if (other.gameObject.CompareTag("BigPlayer") && !isSpecialBrick)
+        else if ((other.gameObject.CompareTag("BigPlayer") || other.gameObject.CompareTag("UltimateBigPlayer")) &&
+                 !isSpecialBrick)
         {
             disableCollider.enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;
@@ -49,7 +50,9 @@ public class BrickController : MonoBehaviour
             StartCoroutine(Destroy());
         }
 
-        if ((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BigPlayer")) && isSpecialBrick)
+        if ((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("UltimatePlayer") ||
+             other.gameObject.CompareTag("BigPlayer") || other.gameObject.CompareTag("UltimateBigPlayer")) &&
+            isSpecialBrick)
         {
             if (specialBrickHealth > 0)
             {
@@ -65,7 +68,8 @@ public class BrickController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BigPlayer"))
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("UltimatePlayer") ||
+            other.gameObject.CompareTag("BigPlayer") || other.gameObject.CompareTag("UltimateBigPlayer"))
         {
             isTouchByPlayer = false;
             _brickAnim.SetBool(TouchB, isTouchByPlayer);

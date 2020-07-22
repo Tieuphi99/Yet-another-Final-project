@@ -12,6 +12,10 @@ public class BrickController : MonoBehaviour
     public GameObject breakBrickPieces;
     public GameObject animationSprite;
     private Animator _brickAnim;
+    private AudioSource _brickAudio;
+    public AudioClip bumpSound;
+    public AudioClip breakSound;
+    public AudioClip coinSound;
     private static readonly int TouchB = Animator.StringToHash("Touch_b");
     private static readonly int TouchT = Animator.StringToHash("Touch_t");
     private static readonly int SpecialB = Animator.StringToHash("Special_b");
@@ -19,6 +23,7 @@ public class BrickController : MonoBehaviour
 
     private void Awake()
     {
+        _brickAudio = GetComponent<AudioSource>();
         _brickAnim = GetComponent<Animator>();
     }
 
@@ -35,6 +40,7 @@ public class BrickController : MonoBehaviour
     {
         if ((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("UltimatePlayer")) && !isSpecialBrick)
         {
+            _brickAudio.PlayOneShot(bumpSound);
             isTouchByPlayer = true;
             _brickAnim.SetBool(TouchB, isTouchByPlayer);
         }
@@ -42,6 +48,7 @@ public class BrickController : MonoBehaviour
         else if ((other.gameObject.CompareTag("BigPlayer") || other.gameObject.CompareTag("UltimateBigPlayer")) &&
                  !isSpecialBrick)
         {
+            _brickAudio.PlayOneShot(breakSound);
             disableCollider.enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;
             breakBrickPieces.SetActive(true);
@@ -56,6 +63,7 @@ public class BrickController : MonoBehaviour
         {
             if (specialBrickHealth > 0)
             {
+                _brickAudio.PlayOneShot(coinSound);
                 specialBrickHealth -= 1;
                 GameStatusController.CollectedCoin += 1;
                 GameStatusController.Score += 200;

@@ -26,7 +26,7 @@ namespace EnemyScripts
         {
             if (_isMove)
             {
-                Move();
+                // Move();
             }
         }
 
@@ -57,7 +57,7 @@ namespace EnemyScripts
                         _isMoveRight = true;
                     }
 
-                    _isPlayerKillable = true;
+                    // _isPlayerKillable = true;
                 }
             }
             else
@@ -94,11 +94,11 @@ namespace EnemyScripts
         {
             if (_isMoveRight)
             {
-                koopa.transform.Translate(-speed * Time.deltaTime * Vector3.left);
+                koopa.transform.Translate(speed * Time.deltaTime * Vector3.right);
             }
             else
             {
-                koopa.transform.Translate(speed * Time.deltaTime * Vector3.left);
+                koopa.transform.Translate(-speed * Time.deltaTime * Vector3.right);
             }
         }
     }

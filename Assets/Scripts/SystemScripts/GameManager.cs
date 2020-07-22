@@ -13,8 +13,6 @@ namespace SystemScripts
         public GameStatusController gameStatusController;
         public List<EnemyController> enemyControllers;
         public List<GameObject> enemyGameObjects;
-        public GameObject invisibleBrick;
-        public GameObject invisiblePowerUp;
         public GameObject stairwayPrefab;
         public Transform stairwayDownParent;
         public Transform stairwayUpParent;
@@ -44,7 +42,7 @@ namespace SystemScripts
                 SetActiveEnemiesWhenSeePlayer();
                 DestroyEnemiesOutOfBound();
                 UpdateTime();
-                if (player.CompareTag("UltimatePlayer"))
+                if (player.CompareTag("UltimatePlayer") || player.CompareTag("UltimateBigPlayer"))
                 {
                     for (var i = 0; i < enemyControllers.Count; i++)
                     {
@@ -159,18 +157,6 @@ namespace SystemScripts
                         finalTime = time;
                     }
                 }
-            }
-        }
-
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BigPlayer"))
-            {
-                invisibleBrick.SetActive(true);
-                invisibleBrick.GetComponent<BoxCollider2D>().isTrigger = false;
-                invisiblePowerUp.SetActive(true);
-                invisiblePowerUp.GetComponent<BoxCollider2D>().isTrigger = false;
-                GetComponent<BoxCollider2D>().enabled = false;
             }
         }
 

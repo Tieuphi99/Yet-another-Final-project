@@ -14,11 +14,14 @@ namespace EnemyScripts
         private Animator _enemyAnim;
         public List<Collider2D> deadDisableCollider;
         public Collider2D deadEnableCollider;
+        private AudioSource _enemyAudio;
+        public AudioClip kickSound;
 
         private static readonly int DieB = Animator.StringToHash("Die_b");
 
         private void Awake()
         {
+            _enemyAudio = GetComponent<AudioSource>();
             _enemyAnim = GetComponent<Animator>();
         }
 
@@ -55,7 +58,6 @@ namespace EnemyScripts
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            Debug.Log(other.gameObject.tag);
             Vector3 localScale = transform.localScale;
             if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Ground") &&
                 !other.gameObject.CompareTag("Brick") && !other.gameObject.CompareTag("ScreenBorder"))
@@ -77,6 +79,7 @@ namespace EnemyScripts
 
             if (other.gameObject.CompareTag("KoopaShell"))
             {
+                _enemyAudio.PlayOneShot(kickSound);
                 GameStatusController.IsEnemyDieOrCoinEat = true;
                 Destroy(gameObject);
             }

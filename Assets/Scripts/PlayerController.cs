@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public bool isInvincible;
     private Vector3 _velocity;
 
-    public GameObject playerSprite;
+    [Header("GameObject Settings")] public GameObject playerSprite;
     public GameObject bigPlayer;
     public GameObject bigPlayerCollider;
     public GameObject smallPlayer;
@@ -38,11 +38,16 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _playerRb;
     private AudioSource _playerAudio;
 
-    public AudioClip jumpSound;
+    [Header("AudioClip Settings")] public AudioClip jumpSound;
     public AudioClip jumpBigSound;
     public AudioClip stageClearSound;
     public AudioClip flagPoleSound;
     public AudioClip pipeSound;
+    public AudioClip dieSound;
+    public AudioClip oneUpSound;
+    public AudioClip turnBigSound;
+    public AudioClip coinSound;
+    public AudioClip kickSound;
 
     private static readonly int IdleB = Animator.StringToHash("Idle_b");
     private static readonly int WalkB = Animator.StringToHash("Walk_b");
@@ -245,17 +250,20 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("DeathAbyss"))
         {
+            _playerAudio.PlayOneShot(dieSound);
             _playerRb.velocity = Vector2.zero;
         }
 
         if (other.gameObject.CompareTag("1UpMushroom") && _isEatable)
         {
+            _playerAudio.PlayOneShot(oneUpSound);
             GameStatusController.Live += 1;
             _isEatable = false;
         }
 
         if (other.gameObject.CompareTag("BigMushroom") && _isEatable)
         {
+            _playerAudio.PlayOneShot(turnBigSound);
             TurnIntoBigPlayer();
             _isEatable = false;
         }
@@ -264,13 +272,22 @@ public class PlayerController : MonoBehaviour
         {
             _isAboveSpecialPipe = true;
         }
+
+        if (other.gameObject.CompareTag("KoopaShell"))
+        {
+            _playerAudio.PlayOneShot(kickSound);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            _playerAudio.PlayOneShot(coinSound);
+        }
+
         if (other.gameObject.CompareTag("UltimateStar") && _isEatable)
         {
-            Debug.Log("ATE");
             if (CompareTag("Player"))
             {
                 tag = "UltimatePlayer";

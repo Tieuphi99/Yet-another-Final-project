@@ -14069,6 +14069,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1081540804}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1081540807 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3996239121361480241, guid: cab1bfbd4e680432da49a542c18d3043,
+    type: 3}
+  m_PrefabInstance: {fileID: 1081540804}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081540805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d70aef29bf8b4fc69dd91cb13bb48d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1095389785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16959,7 +16971,7 @@ PrefabInstance:
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: enemyControllers.Array.size
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
@@ -17326,6 +17338,11 @@ PrefabInstance:
       propertyPath: isStairLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1085805703535972922, guid: 30b8eaf80aaac480cb910e5791aecc4e,
+        type: 3}
+      propertyPath: enemyControllers.Array.data[16]
+      value: 
+      objectReference: {fileID: 1081540807}
     - target: {fileID: 1961857431134350412, guid: 30b8eaf80aaac480cb910e5791aecc4e,
         type: 3}
       propertyPath: gameStatusController

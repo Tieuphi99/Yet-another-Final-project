@@ -56,7 +56,16 @@ AnimationClip:
       value: {fileID: -415849053725161629, guid: f03ebb725c6ba4cc8864aaf424ef8727,
         type: 3}
     - time: 0.2
-      value: {fileID: -3889344650559148656, guid: 9a569984145514a2bb2802ef51df788b,
+      value: {fileID: -1981437635880020547, guid: 9a569984145514a2bb2802ef51df788b,
+        type: 3}
+    - time: 0.21666667
+      value: {fileID: -3875305052190309870, guid: f03ebb725c6ba4cc8864aaf424ef8727,
+        type: 3}
+    - time: 0.23333333
+      value: {fileID: -6296434410678393177, guid: f03ebb725c6ba4cc8864aaf424ef8727,
+        type: 3}
+    - time: 0.25
+      value: {fileID: -415849053725161629, guid: f03ebb725c6ba4cc8864aaf424ef8727,
         type: 3}
     attribute: m_Sprite
     path: Animations/SmallMarioAnimations
@@ -89,13 +98,16 @@ AnimationClip:
     - {fileID: -3875305052190309870, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}
     - {fileID: -6296434410678393177, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}
     - {fileID: -415849053725161629, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}
-    - {fileID: -3889344650559148656, guid: 9a569984145514a2bb2802ef51df788b, type: 3}
+    - {fileID: -1981437635880020547, guid: 9a569984145514a2bb2802ef51df788b, type: 3}
+    - {fileID: -3875305052190309870, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}
+    - {fileID: -6296434410678393177, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}
+    - {fileID: -415849053725161629, guid: f03ebb725c6ba4cc8864aaf424ef8727, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.21666667
+    m_StopTime: 0.26666668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

@@ -32,13 +32,6 @@ namespace EnemyScripts
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Ground") &&
-                !other.gameObject.CompareTag("Brick") && !other.gameObject.CompareTag("ScreenBorder") &&
-                !other.gameObject.CompareTag("Goomba") && !other.gameObject.CompareTag("Koopa"))
-            {
-                transform.Rotate(0, 180, 0);
-            }
-
             if (!_isPlayerKillable)
             {
                 if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BigPlayer"))

@@ -18,6 +18,8 @@ namespace SystemScripts
         public GameObject pausePopup;
         public GameObject instructionPopup;
         public GameObject creditPopup;
+        public GameObject firstMessagePopup;
+        public GameObject secondMessagePopup;
         public Transform scoreParent;
         private AudioSource _gameStatusAudio;
         public AudioClip pauseSound;
@@ -36,6 +38,7 @@ namespace SystemScripts
         public static bool IsGameFinish;
         public static bool IsEnemyDieOrCoinEat;
         public static bool IsPowerUpEat;
+        public static bool IsShowMessage;
         public static string PlayerTag;
         private float _second;
 
@@ -48,6 +51,11 @@ namespace SystemScripts
 
         private void Update()
         {
+            if (IsShowMessage)
+            {
+                StartCoroutine(DisplayFirstMessage());
+            }
+            
             if (IsEnemyDieOrCoinEat)
             {
                 IsEnemyDieOrCoinEat = false;
@@ -205,6 +213,19 @@ namespace SystemScripts
         {
             yield return new WaitForSeconds(1);
             Destroy(prefab);
+        }
+
+        private IEnumerator DisplayFirstMessage()
+        {
+            yield return new WaitForSeconds(1);
+            firstMessagePopup.SetActive(true);
+            StartCoroutine(DisplaySecondMessage());
+        }
+
+        private IEnumerator DisplaySecondMessage()
+        {
+            yield return new WaitForSeconds(1.5f);
+            secondMessagePopup.SetActive(true);
         }
     }
 }

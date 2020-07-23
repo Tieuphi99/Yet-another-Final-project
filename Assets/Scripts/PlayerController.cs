@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip turnBigSound;
     public AudioClip coinSound;
     public AudioClip kickSound;
+    public AudioClip endGameSound;
 
     private static readonly int IdleB = Animator.StringToHash("Idle_b");
     private static readonly int WalkB = Animator.StringToHash("Walk_b");
@@ -83,8 +84,13 @@ public class PlayerController : MonoBehaviour
     {
         if (GameStatusController.IsGameFinish)
         {
-            _playerAnim.SetFloat(SpeedF, 3f);
-            transform.Translate(slideDownSpeed / 1.5f * Time.deltaTime * Vector3.right);
+            transform.Translate(slideDownSpeed / 1.25f * Time.deltaTime * Vector3.right);
+            if (Input.GetKeyDown(KeyCode.Backspace))
+            {
+                GameStatusController.IsGameFinish = false;
+                GameStatusController.IsShowMessage = false;
+                SceneManager.LoadScene(0);
+            }
         }
         
         if (Mathf.RoundToInt(transform.position.x) == 285)
@@ -114,7 +120,7 @@ public class PlayerController : MonoBehaviour
         {
             Die();
         }
-        else if (!isDead && !_isFinish)
+        else if (!isDead && !_isFinish && !GameStatusController.IsGameFinish)
         {
             _playerAnim.SetBool(BigB, GameStatusController.IsBigPlayer);
             ChangeAnim();
@@ -225,7 +231,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Pipe") ||
             other.gameObject.CompareTag("Brick") || other.gameObject.CompareTag("Stone") ||
             other.gameObject.CompareTag("SpecialPipe"))
@@ -300,13 +305,18 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Princess"))
         {
             slideDownSpeed = 0;
+            GameStatusController.IsShowMessage = true;
+            _playerAnim.SetFloat(SpeedF, 0);
         }
         
         if (other.gameObject.CompareTag("Axe"))
         {
+            _playerAudio.PlayOneShot(endGameSound);
             Destroy(other.gameObject);
             GameStatusController.IsBossBattle = false;
             GameStatusController.IsGameFinish = true;
+            _playerAnim.SetFloat(SpeedF, 3f);
+            _playerRb.velocity = Vector2.zero;
         }
 
         if (other.gameObject.CompareTag("Coin"))

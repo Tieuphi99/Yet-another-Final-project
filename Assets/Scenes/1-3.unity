@@ -3835,7 +3835,7 @@ PrefabInstance:
     - target: {fileID: 5562541293349834300, guid: 2a2addac90ed74fabb168b9cf9fa008c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 286.59
+      value: 284.14
       objectReference: {fileID: 0}
     - target: {fileID: 5562541293349834300, guid: 2a2addac90ed74fabb168b9cf9fa008c,
         type: 3}
@@ -7801,7 +7801,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2888598, y: 1.4375}
+  m_Size: {x: 1.9647022, y: 1.4375}
   m_EdgeRadius: 0
 --- !u!212 &1601203725
 SpriteRenderer:

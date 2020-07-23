@@ -131,7 +131,7 @@ namespace SystemScripts
 
         private void UpdateTime()
         {
-            if (!GameStatusController.IsDead && !player.isWalkingToCastle && !player.isInCastle)
+            if (!GameStatusController.IsDead && !player.isWalkingToCastle && !player.isInCastle && !GameStatusController.IsGameFinish)
             {
                 gameStatusController.SetTime(time -= Time.deltaTime * 2);
                 if (time < 0)

@@ -336,6 +336,7 @@ MonoBehaviour:
   turnBigSound: {fileID: 8300000, guid: a2c3a74013fcc4ed38bf5a5d6008932c, type: 3}
   coinSound: {fileID: 8300000, guid: f145a6a1bcf60439aa6a3c271d13f107, type: 3}
   kickSound: {fileID: 8300000, guid: 58d6b472f31ea4d5897287424bdb6e1e, type: 3}
+  endGameSound: {fileID: 8300000, guid: 34e5b02d56319410d9a7067c0b82dfef, type: 3}
 --- !u!95 &5562541293349834303
 Animator:
   serializedVersion: 3

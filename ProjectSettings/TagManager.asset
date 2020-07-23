@@ -30,6 +30,8 @@ TagManager:
   - UltimatePlayer
   - UltimateBigPlayer
   - KoopaShell
+  - Axe
+  - Princess
   layers:
   - Default
   - TransparentFX

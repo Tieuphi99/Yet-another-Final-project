@@ -30,7 +30,9 @@ namespace SystemScripts
                 if (_currentPlayerPosition > 3.5f &&
                     _currentPlayerPosition >= _furthestPlayerPosition)
                 {
-                    transform.position = new Vector3(player.transform.position.x, 5, -10);
+                    transform.position = !GameStatusController.IsBossBattle
+                        ? new Vector3(player.transform.position.x, 5, -10)
+                        : new Vector3(285, 5, -10);
                 }
             }
         }

@@ -81,6 +81,17 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameStatusController.IsGameFinish)
+        {
+            _playerAnim.SetFloat(SpeedF, 3f);
+            transform.Translate(slideDownSpeed / 1.5f * Time.deltaTime * Vector3.right);
+        }
+        
+        if (Mathf.RoundToInt(transform.position.x) == 285)
+        {
+            GameStatusController.IsBossBattle = true;
+        }
+
         isDead = GameStatusController.IsDead;
         if (isInvincible)
         {
@@ -286,6 +297,18 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.CompareTag("Princess"))
+        {
+            slideDownSpeed = 0;
+        }
+        
+        if (other.gameObject.CompareTag("Axe"))
+        {
+            Destroy(other.gameObject);
+            GameStatusController.IsBossBattle = false;
+            GameStatusController.IsGameFinish = true;
+        }
+
         if (other.gameObject.CompareTag("Coin"))
         {
             _playerAudio.PlayOneShot(coinSound);

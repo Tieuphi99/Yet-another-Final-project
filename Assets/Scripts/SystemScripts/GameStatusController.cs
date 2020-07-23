@@ -32,9 +32,11 @@ namespace SystemScripts
         public static bool IsDead;
         public static bool IsGameOver;
         public static bool IsBigPlayer;
-        public static string PlayerTag;
+        public static bool IsBossBattle;
+        public static bool IsGameFinish;
         public static bool IsEnemyDieOrCoinEat;
         public static bool IsPowerUpEat;
+        public static string PlayerTag;
         private float _second;
 
         private void Awake()

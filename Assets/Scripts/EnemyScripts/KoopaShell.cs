@@ -40,8 +40,7 @@ namespace EnemyScripts
                     Vector3 relative = transform.InverseTransformPoint(other.transform.position);
                     float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
                     _isMove = true;
-                    Debug.Log(angle);
-                    if (angle < 0)
+                    if (angle > 0)
                     {
                         _isMoveRight = false;
                     }

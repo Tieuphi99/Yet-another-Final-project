@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +18,24 @@ public class StairwayController : MonoBehaviour
         }
         else
         {
+            if (transform.position.x < 59)
+            {
+                moveSpeed = -moveSpeed;
+            }
+            else if (transform.position.x > 65)
+            {
+                moveSpeed = -moveSpeed;
+            }
             MoveHorizontal();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log(other.gameObject.tag);
+        if (other.gameObject.CompareTag("Stone"))
+        {
+            moveSpeed = -moveSpeed;
         }
     }
 

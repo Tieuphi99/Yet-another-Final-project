@@ -214,6 +214,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Pipe") ||
             other.gameObject.CompareTag("Brick") || other.gameObject.CompareTag("Stone") ||
             other.gameObject.CompareTag("SpecialPipe"))
@@ -251,6 +252,10 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("DeathAbyss"))
         {
             _playerAudio.PlayOneShot(dieSound);
+            GameStatusController.IsBigPlayer = false;
+            GameStatusController.PlayerTag = "Player";
+            GameStatusController.IsDead = true;
+            _playerRb.isKinematic = true;
             _playerRb.velocity = Vector2.zero;
         }
 
@@ -382,6 +387,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         playerCol.SetActive(false);
+        _playerRb.isKinematic = false;
     }
 
     private static IEnumerator LoadingScene()

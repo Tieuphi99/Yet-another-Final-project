@@ -50,8 +50,6 @@ MonoBehaviour:
   gameStatusController: {fileID: 0}
   enemyControllers: []
   enemyGameObjects: []
-  invisibleBrick: {fileID: 0}
-  invisiblePowerUp: {fileID: 0}
   stairwayPrefab: {fileID: 4855003028182618422, guid: 4228caf4eeb5648659b606d7191fb79d,
     type: 3}
   stairwayDownParent: {fileID: 5080703557547658986}

@@ -43,6 +43,8 @@ namespace EnemyScripts
                 {
                     _enemyAudio.PlayOneShot(hitPlayerSound);
                     GameStatusController.IsDead = true;
+                    playerController.GetComponent<Rigidbody2D>().isKinematic = true;
+                    playerController.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 }
                 else
                 {

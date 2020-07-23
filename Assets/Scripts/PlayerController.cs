@@ -289,6 +289,32 @@ public class PlayerController : MonoBehaviour
             _isEatable = false;
         }
 
+        if (other.gameObject.CompareTag("UltimateStar") && _isEatable)
+        {
+            _playerAudio.PlayOneShot(turnBigSound);
+            if (CompareTag("Player"))
+            {
+                tag = "UltimatePlayer";
+            }
+            else
+            {
+                tag = "UltimateBigPlayer";
+            }
+
+            isInvincible = true;
+            _playerAnim.SetBool(UltimateB, isInvincible);
+            _startInvincible = Time.time;
+            _isEatable = false;
+        }
+
+        if (other.gameObject.CompareTag("FireFlower") && (CompareTag("Player") || CompareTag("UltimatePlayer")) &&
+            _isEatable)
+        {
+            _playerAudio.PlayOneShot(turnBigSound);
+            TurnIntoBigPlayer();
+            _isEatable = false;
+        }
+
         if (other.gameObject.CompareTag("SpecialPipe"))
         {
             _isAboveSpecialPipe = true;
@@ -322,30 +348,6 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Coin"))
         {
             _playerAudio.PlayOneShot(coinSound);
-        }
-
-        if (other.gameObject.CompareTag("UltimateStar") && _isEatable)
-        {
-            if (CompareTag("Player"))
-            {
-                tag = "UltimatePlayer";
-            }
-            else
-            {
-                tag = "UltimateBigPlayer";
-            }
-
-            isInvincible = true;
-            _playerAnim.SetBool(UltimateB, isInvincible);
-            _startInvincible = Time.time;
-            _isEatable = false;
-        }
-
-        if (other.gameObject.CompareTag("FireFlower") && (CompareTag("Player") || CompareTag("UltimatePlayer")) &&
-            _isEatable)
-        {
-            TurnIntoBigPlayer();
-            _isEatable = false;
         }
     }
 

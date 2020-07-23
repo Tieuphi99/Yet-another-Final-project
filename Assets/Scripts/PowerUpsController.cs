@@ -12,9 +12,14 @@ public class PowerUpsController : MonoBehaviour
     private bool _isEatable;
     private float _firstYPos;
 
+    private AudioSource _powerAudio;
+
+    public AudioClip appearSound;
+
     // Start is called before the first frame update
     void Awake()
     {
+        _powerAudio = GetComponent<AudioSource>();
         Physics2D.IgnoreLayerCollision(9, 10, true);
         _firstYPos = transform.position.y;
     }
@@ -46,35 +51,17 @@ public class PowerUpsController : MonoBehaviour
     {
         InteractionWithPlayer(other.gameObject);
 
-        if (CompareTag("FireFlower") || CompareTag("UltimateStar"))
-        {
-            GetComponent<BoxCollider2D>().isTrigger = true;
-        }
-
-        if (other.gameObject.CompareTag("Stone") || other.gameObject.CompareTag("Pipe") || other.gameObject.CompareTag("Untagged"))
+        if (other.gameObject.CompareTag("Stone") || other.gameObject.CompareTag("Pipe") ||
+            other.gameObject.CompareTag("Untagged"))
         {
             speedRight = -speedRight;
-        }
-
-        if (other.gameObject.CompareTag("Goomba") || other.gameObject.CompareTag("Koopa"))
-        {
-            GetComponent<BoxCollider2D>().isTrigger = true;
-            GetComponent<Rigidbody2D>().isKinematic = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Goomba") || other.gameObject.CompareTag("Koopa"))
-        {
-            GetComponent<BoxCollider2D>().isTrigger = false;
-            GetComponent<Rigidbody2D>().isKinematic = false;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (CompareTag("Coin") && (other.CompareTag("Player") || other.CompareTag("BigPlayer") || other.CompareTag("UltimatePlayer") || other.CompareTag("UltimateBigPlayer")))
+        if (CompareTag("Coin") && (other.CompareTag("Player") || other.CompareTag("BigPlayer") ||
+                                   other.CompareTag("UltimatePlayer") || other.CompareTag("UltimateBigPlayer")))
         {
             GameStatusController.CollectedCoin += 1;
             GameStatusController.Score += 200;
@@ -95,11 +82,13 @@ public class PowerUpsController : MonoBehaviour
     {
         if (other.CompareTag("Player") || other.CompareTag("UltimatePlayer"))
         {
+            _powerAudio.PlayOneShot(appearSound);
             isTouchByPlayer = true;
             StartCoroutine(SetBoolEatable());
         }
         else if (other.CompareTag("BigPlayer") || other.CompareTag("UltimateBigPlayer"))
         {
+            _powerAudio.PlayOneShot(appearSound);
             isTouchByPlayer = true;
             StartCoroutine(SetBoolEatable());
         }

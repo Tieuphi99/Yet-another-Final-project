@@ -153,6 +153,7 @@ namespace SystemScripts
                             enemyControllers[i].gameObject.transform.position.y - player.transform.position.y >
                             -0.2f)
                         {
+                            GameStatusController.Score += 200;
                             GameStatusController.IsEnemyDieOrCoinEat = true;
                             enemyControllers[i].Die();
                             enemyControllers.Remove(enemyControllers[i]);

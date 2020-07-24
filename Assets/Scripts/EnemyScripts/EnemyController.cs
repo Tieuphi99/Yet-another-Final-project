@@ -14,14 +14,11 @@ namespace EnemyScripts
         private Animator _enemyAnim;
         public List<Collider2D> deadDisableCollider;
         public Collider2D deadEnableCollider;
-        private AudioSource _enemyAudio;
-        public AudioClip kickSound;
 
         private static readonly int DieB = Animator.StringToHash("Die_b");
 
         private void Awake()
         {
-            _enemyAudio = GetComponent<AudioSource>();
             _enemyAnim = GetComponent<Animator>();
         }
 

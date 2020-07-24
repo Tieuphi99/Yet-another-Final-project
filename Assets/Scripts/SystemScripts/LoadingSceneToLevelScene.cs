@@ -14,7 +14,7 @@ namespace SystemScripts
         private void Start()
         {
             _loadSceneAudio = GetComponent<AudioSource>();
-            if (GameStatusController.Live < 2)
+            if (GameStatusController.Live < 1)
             {
                 GameStatusController.IsGameOver = true;
             }
@@ -23,7 +23,6 @@ namespace SystemScripts
             {
                 if (GameStatusController.IsDead)
                 {
-                    GameStatusController.Live -= 1;
                     StartCoroutine(RepeatLevelScene());
                 }
                 else

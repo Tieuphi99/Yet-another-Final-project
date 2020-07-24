@@ -32,7 +32,6 @@ public class StairwayController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Stone"))
         {
             moveSpeed = -moveSpeed;

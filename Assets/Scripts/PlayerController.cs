@@ -208,13 +208,19 @@ public class PlayerController : MonoBehaviour
             jumpForce = 1030;
         }
 
-        if (Input.GetKey(KeyCode.DownArrow) && (CompareTag("BigPlayer") || CompareTag("UltimateBigPlayer")))
+        if (Input.GetKeyDown(KeyCode.DownArrow) && _isAboveSpecialPipe)
+        {
+            _isGoingDownPipeAble = true;
+            StartCoroutine(StopGoingDownPipe());
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow) && (CompareTag("BigPlayer") || CompareTag("UltimateBigPlayer")) && !_isAboveSpecialPipe)
         {
             _playerAnim.SetBool(CrouchB, true);
             smallPlayerCollider.SetActive(true);
             bigPlayerCollider.SetActive(false);
         }
-        else if (Input.GetKeyUp(KeyCode.DownArrow) && (CompareTag("BigPlayer") || CompareTag("UltimateBigPlayer")))
+        else if (Input.GetKeyUp(KeyCode.DownArrow) && (CompareTag("BigPlayer") || CompareTag("UltimateBigPlayer")) && !_isAboveSpecialPipe)
         {
             _playerAnim.SetBool(CrouchB, false);
             smallPlayerCollider.SetActive(false);
@@ -238,16 +244,11 @@ public class PlayerController : MonoBehaviour
                 _isFacingRight = !_isFacingRight;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.DownArrow) && _isAboveSpecialPipe)
-        {
-            _isGoingDownPipeAble = true;
-            StartCoroutine(StopGoingDownPipe());
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Pipe") ||
             other.gameObject.CompareTag("Brick") || other.gameObject.CompareTag("Stone") ||
             other.gameObject.CompareTag("SpecialPipe"))
@@ -285,6 +286,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("DeathAbyss"))
         {
             _playerAudio.PlayOneShot(dieSound);
+            GameStatusController.Live -= 1;
             GameStatusController.IsBigPlayer = false;
             GameStatusController.PlayerTag = "Player";
             GameStatusController.IsDead = true;

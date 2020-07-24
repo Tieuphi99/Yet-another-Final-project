@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4510656188418952238}
-  - component: {fileID: 7079377461122702781}
   - component: {fileID: 558512701000548605}
+  - component: {fileID: 7079377461122702781}
   m_Layer: 8
   m_Name: SmallMarioCollider
   m_TagString: Player
@@ -32,32 +32,6 @@ Transform:
   m_Father: {fileID: 14817616037679195}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &7079377461122702781
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029444639882601917}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.034701407}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7041763, y: 0.8734043}
-  m_EdgeRadius: 0.02
 --- !u!68 &558512701000548605
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -75,8 +49,34 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: 0.0001316071, y: 0.3581342}
-  - {x: -0.00000047683716, y: 0.4696889}
+  - {x: 0.000006198883, y: 0.37003812}
   - {x: 0.0002384186, y: 0.3552648}
+--- !u!61 &7079377461122702781
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029444639882601917}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.08574708}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7041763, y: 0.7713131}
+  m_EdgeRadius: 0.02
 --- !u!1 &3713772949689718507
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 410
   slideDownSpeed: 5
-  jumpForce: 1030
+  jumpForce: 1025
   smoothTime: 0.6
   isDead: 0
   isWalkingToCastle: 0

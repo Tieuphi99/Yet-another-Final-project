@@ -63,7 +63,6 @@ public class PlayerController : MonoBehaviour
     private static readonly int UltimateDurationF = Animator.StringToHash("UltimateDuration_f");
     private static readonly int CrouchB = Animator.StringToHash("Crouch_b");
 
-
     void Awake()
     {
         _isFacingRight = true;

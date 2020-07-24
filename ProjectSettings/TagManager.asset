@@ -32,6 +32,7 @@ TagManager:
   - KoopaShell
   - Axe
   - Princess
+  - Piranha
   layers:
   - Default
   - TransparentFX

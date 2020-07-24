@@ -47,7 +47,6 @@ namespace EnemyScripts
                     Vector3 relative = transform.InverseTransformPoint(other.transform.position);
                     float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
                     _isMove = true;
-                    Debug.Log(angle);
                     if (other.gameObject.CompareTag("Player"))
                     {
                         if (angle > 0)

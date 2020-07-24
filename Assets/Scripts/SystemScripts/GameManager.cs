@@ -42,30 +42,7 @@ namespace SystemScripts
                 SetActiveEnemiesWhenSeePlayer();
                 DestroyEnemiesOutOfBound();
                 UpdateTime();
-                if (player.CompareTag("UltimatePlayer") || player.CompareTag("UltimateBigPlayer"))
-                {
-                    for (var i = 0; i < enemyControllers.Count; i++)
-                    {
-                        if (enemyControllers[i] != null)
-                        {
-                            if (Mathf.RoundToInt(enemyControllers[i].gameObject.transform.position.x -
-                                                 player.transform.position.x) == 0 &&
-                                enemyControllers[i].gameObject.transform.position.y - player.transform.position.y <
-                                0.2f &&
-                                enemyControllers[i].gameObject.transform.position.y - player.transform.position.y >
-                                -0.2f)
-                            {
-                                GameStatusController.IsEnemyDieOrCoinEat = true;
-                                enemyControllers[i].Die();
-                                enemyControllers.Remove(enemyControllers[i]);
-                            }
-                        }
-                        else
-                        {
-                            enemyControllers.Remove(enemyControllers[i]);
-                        }
-                    }
-                }
+                UltimateDestroyAll();
 
                 if (player.isStopTime)
                 {
@@ -131,7 +108,8 @@ namespace SystemScripts
 
         private void UpdateTime()
         {
-            if (!GameStatusController.IsDead && !player.isWalkingToCastle && !player.isInCastle && !GameStatusController.IsGameFinish)
+            if (!GameStatusController.IsDead && !player.isWalkingToCastle && !player.isInCastle &&
+                !GameStatusController.IsGameFinish)
             {
                 gameStatusController.SetTime(time -= Time.deltaTime * 2);
                 if (time < 0)
@@ -155,6 +133,34 @@ namespace SystemScripts
                     {
                         GameStatusController.Score += 50;
                         finalTime = time;
+                    }
+                }
+            }
+        }
+
+        private void UltimateDestroyAll()
+        {
+            if (player.CompareTag("UltimatePlayer") || player.CompareTag("UltimateBigPlayer"))
+            {
+                for (var i = 0; i < enemyControllers.Count; i++)
+                {
+                    if (enemyControllers[i] != null)
+                    {
+                        if (Mathf.RoundToInt(enemyControllers[i].gameObject.transform.position.x -
+                                             player.transform.position.x) == 0 &&
+                            enemyControllers[i].gameObject.transform.position.y - player.transform.position.y <
+                            0.2f &&
+                            enemyControllers[i].gameObject.transform.position.y - player.transform.position.y >
+                            -0.2f)
+                        {
+                            GameStatusController.IsEnemyDieOrCoinEat = true;
+                            enemyControllers[i].Die();
+                            enemyControllers.Remove(enemyControllers[i]);
+                        }
+                    }
+                    else
+                    {
+                        enemyControllers.Remove(enemyControllers[i]);
                     }
                 }
             }

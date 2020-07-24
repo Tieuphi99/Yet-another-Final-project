@@ -21,7 +21,6 @@ public class CoinBrickController : MonoBehaviour
         if ((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("UltimatePlayer") ||
              other.gameObject.CompareTag("BigPlayer") || other.gameObject.CompareTag("UltimateBigPlayer")) && !isTouchByPlayer)
         {
-            Debug.Log("Brick CALLED");
             if (isNotSpecialBrick)
             {
                 _coinBrickAudio.PlayOneShot(coinSound);

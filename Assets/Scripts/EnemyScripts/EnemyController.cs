@@ -78,7 +78,6 @@ namespace EnemyScripts
 
             if (other.gameObject.CompareTag("KoopaShell"))
             {
-                _enemyAudio.PlayOneShot(kickSound);
                 GameStatusController.IsEnemyDieOrCoinEat = true;
                 Destroy(gameObject);
             }

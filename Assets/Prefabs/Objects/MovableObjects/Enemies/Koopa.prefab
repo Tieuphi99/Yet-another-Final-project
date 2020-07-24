@@ -74,6 +74,7 @@ MonoBehaviour:
   koopa: {fileID: 6691854002660372949}
   speed: 10.5
   hitPlayerSound: {fileID: 8300000, guid: b95f4a2385c8e4b838ad7f8208f3f5e1, type: 3}
+  kickSound: {fileID: 8300000, guid: 58d6b472f31ea4d5897287424bdb6e1e, type: 3}
 --- !u!82 &5780383036276282338
 AudioSource:
   m_ObjectHideFlags: 0

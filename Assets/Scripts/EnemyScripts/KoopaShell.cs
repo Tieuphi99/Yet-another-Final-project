@@ -15,6 +15,7 @@ namespace EnemyScripts
         private AudioSource _enemyAudio;
 
         public AudioClip hitPlayerSound;
+        public AudioClip kickSound;
 
         private void Awake()
         {
@@ -32,6 +33,10 @@ namespace EnemyScripts
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            if (!other.gameObject.CompareTag("Player"))
+            {
+                _enemyAudio.PlayOneShot(kickSound);
+            }
             if (!_isPlayerKillable)
             {
                 if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BigPlayer"))

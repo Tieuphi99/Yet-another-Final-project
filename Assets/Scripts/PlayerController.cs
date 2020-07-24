@@ -333,6 +333,14 @@ public class PlayerController : MonoBehaviour
             _isEatable = false;
         }
 
+        if (other.gameObject.CompareTag("FireFlower") && (CompareTag("BigPlayer") || CompareTag("UltimateBigPlayer")) &&
+            _isEatable)
+        {
+            _playerAudio.PlayOneShot(turnBigSound);
+            // TurnIntoFirePlayer();
+            _isEatable = false;
+        }
+
         if (other.gameObject.CompareTag("SpecialPipe"))
         {
             _isAboveSpecialPipe = true;

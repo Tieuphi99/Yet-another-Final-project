@@ -80,13 +80,13 @@ public class PowerUpsController : MonoBehaviour
 
     void InteractionWithPlayer(GameObject other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("UltimatePlayer"))
+        if ((other.CompareTag("Player") || other.CompareTag("UltimatePlayer")) && !CompareTag("Coin"))
         {
             _powerAudio.PlayOneShot(appearSound);
             isTouchByPlayer = true;
             StartCoroutine(SetBoolEatable());
         }
-        else if (other.CompareTag("BigPlayer") || other.CompareTag("UltimateBigPlayer"))
+        else if (other.CompareTag("BigPlayer") || other.CompareTag("UltimateBigPlayer") && !CompareTag("Coin"))
         {
             _powerAudio.PlayOneShot(appearSound);
             isTouchByPlayer = true;

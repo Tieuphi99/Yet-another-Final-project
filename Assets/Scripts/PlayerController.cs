@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using SystemScripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -60,6 +61,7 @@ public class PlayerController : MonoBehaviour
     private static readonly int HugB = Animator.StringToHash("Hug_b");
     private static readonly int UltimateB = Animator.StringToHash("Ultimate_b");
     private static readonly int UltimateDurationF = Animator.StringToHash("UltimateDuration_f");
+    private static readonly int CrouchB = Animator.StringToHash("Crouch_b");
 
 
     void Awake()
@@ -92,7 +94,7 @@ public class PlayerController : MonoBehaviour
                 SceneManager.LoadScene(0);
             }
         }
-        
+
         if (Mathf.RoundToInt(transform.position.x) == 285)
         {
             GameStatusController.IsBossBattle = true;
@@ -175,10 +177,13 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        Vector2 playerVelocity = _playerRb.velocity;
-        Vector3 targetVelocity = new Vector2(horizontalInput * speed * Time.fixedDeltaTime, playerVelocity.y);
-        _playerRb.velocity = Vector3.SmoothDamp(playerVelocity, targetVelocity, ref _velocity, smoothTime);
+        if (!Input.GetKey(KeyCode.DownArrow))
+        {
+            float horizontalInput = Input.GetAxisRaw("Horizontal");
+            Vector2 playerVelocity = _playerRb.velocity;
+            Vector3 targetVelocity = new Vector2(horizontalInput * speed * Time.fixedDeltaTime, playerVelocity.y);
+            _playerRb.velocity = Vector3.SmoothDamp(playerVelocity, targetVelocity, ref _velocity, smoothTime);
+        }
 
         DenyMidAirJump();
 
@@ -204,7 +209,20 @@ public class PlayerController : MonoBehaviour
             jumpForce = 1030;
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.DownArrow) && (CompareTag("BigPlayer") || CompareTag("UltimateBigPlayer")))
+        {
+            _playerAnim.SetBool(CrouchB, true);
+            smallPlayerCollider.SetActive(true);
+            bigPlayerCollider.SetActive(false);
+        }
+        else if (Input.GetKeyUp(KeyCode.DownArrow) && (CompareTag("BigPlayer") || CompareTag("UltimateBigPlayer")))
+        {
+            _playerAnim.SetBool(CrouchB, false);
+            smallPlayerCollider.SetActive(false);
+            bigPlayerCollider.SetActive(true);
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.DownArrow))
         {
             if (!_isFacingRight)
             {
@@ -213,7 +231,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.DownArrow))
         {
             if (_isFacingRight)
             {
@@ -334,7 +352,7 @@ public class PlayerController : MonoBehaviour
             GameStatusController.IsShowMessage = true;
             _playerAnim.SetFloat(SpeedF, 0);
         }
-        
+
         if (other.gameObject.CompareTag("Axe"))
         {
             _playerAudio.PlayOneShot(endGameSound);

@@ -515,6 +515,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 140782559582041889}
   hitPlayerSound: {fileID: 8300000, guid: b95f4a2385c8e4b838ad7f8208f3f5e1, type: 3}
+  turnSmallPlayerSound: {fileID: 8300000, guid: ceae4130f96724ca1b89b5c049a7d4b8,
+    type: 3}
 --- !u!82 &2190348230657553707
 AudioSource:
   m_ObjectHideFlags: 0

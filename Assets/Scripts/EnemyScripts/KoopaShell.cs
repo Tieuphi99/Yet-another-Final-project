@@ -16,6 +16,7 @@ namespace EnemyScripts
 
         public AudioClip hitPlayerSound;
         public AudioClip kickSound;
+        public AudioClip turnSmallPlayerSound;
 
         private void Awake()
         {
@@ -37,6 +38,7 @@ namespace EnemyScripts
             {
                 _enemyAudio.PlayOneShot(kickSound);
             }
+
             if (!_isPlayerKillable)
             {
                 if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BigPlayer"))
@@ -45,13 +47,28 @@ namespace EnemyScripts
                     Vector3 relative = transform.InverseTransformPoint(other.transform.position);
                     float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
                     _isMove = true;
-                    if (angle > 0)
+                    Debug.Log(angle);
+                    if (other.gameObject.CompareTag("Player"))
                     {
-                        _isMoveRight = false;
+                        if (angle > 0)
+                        {
+                            _isMoveRight = false;
+                        }
+                        else
+                        {
+                            _isMoveRight = true;
+                        }
                     }
-                    else
+                    else if (other.gameObject.CompareTag("BigPlayer"))
                     {
-                        _isMoveRight = true;
+                        if (angle < 0)
+                        {
+                            _isMoveRight = false;
+                        }
+                        else
+                        {
+                            _isMoveRight = true;
+                        }
                     }
 
                     _isPlayerKillable = true;
@@ -77,6 +94,7 @@ namespace EnemyScripts
                 }
                 else if (other.gameObject.CompareTag("BigPlayer"))
                 {
+                    _enemyAudio.PlayOneShot(turnSmallPlayerSound);
                     GameStatusController.IsBigPlayer = false;
                     GameStatusController.PlayerTag = "Player";
                     playerController.gameObject.tag = GameStatusController.PlayerTag;

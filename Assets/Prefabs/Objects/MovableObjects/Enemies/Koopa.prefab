@@ -75,6 +75,8 @@ MonoBehaviour:
   speed: 10.5
   hitPlayerSound: {fileID: 8300000, guid: b95f4a2385c8e4b838ad7f8208f3f5e1, type: 3}
   kickSound: {fileID: 8300000, guid: 58d6b472f31ea4d5897287424bdb6e1e, type: 3}
+  turnSmallPlayerSound: {fileID: 8300000, guid: ceae4130f96724ca1b89b5c049a7d4b8,
+    type: 3}
 --- !u!82 &5780383036276282338
 AudioSource:
   m_ObjectHideFlags: 0
@@ -662,6 +664,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 6691854002660372949}
   hitPlayerSound: {fileID: 8300000, guid: b95f4a2385c8e4b838ad7f8208f3f5e1, type: 3}
+  turnSmallPlayerSound: {fileID: 8300000, guid: ceae4130f96724ca1b89b5c049a7d4b8,
+    type: 3}
 --- !u!61 &2901405652045154894
 BoxCollider2D:
   m_ObjectHideFlags: 0

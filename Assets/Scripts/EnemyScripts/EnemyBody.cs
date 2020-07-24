@@ -14,6 +14,7 @@ namespace EnemyScripts
         private AudioSource _enemyAudio;
 
         public AudioClip hitPlayerSound;
+        public AudioClip turnSmallPlayerSound;
 
         private void Awake()
         {
@@ -54,6 +55,7 @@ namespace EnemyScripts
             }
             else if (other.gameObject.CompareTag("BigPlayer"))
             {
+                _enemyAudio.PlayOneShot(turnSmallPlayerSound);
                 GameStatusController.IsBigPlayer = false;
                 GameStatusController.PlayerTag = "Player";
                 playerController.gameObject.tag = GameStatusController.PlayerTag;

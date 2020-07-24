@@ -40,9 +40,15 @@ public class BrickController : MonoBehaviour
     {
         if ((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("UltimatePlayer")) && !isSpecialBrick)
         {
-            _brickAudio.PlayOneShot(bumpSound);
-            isTouchByPlayer = true;
-            _brickAnim.SetBool(TouchB, isTouchByPlayer);
+            // Vector3 relative = transform.InverseTransformPoint(other.transform.position);
+            // float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
+            // Debug.Log(angle);
+            // if (angle > 153 || angle < -153)
+            // {
+                _brickAudio.PlayOneShot(bumpSound);
+                isTouchByPlayer = true;
+                _brickAnim.SetBool(TouchB, isTouchByPlayer);
+            // }
         }
 
         else if ((other.gameObject.CompareTag("BigPlayer") || other.gameObject.CompareTag("UltimateBigPlayer")) &&

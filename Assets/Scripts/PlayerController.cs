@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     private static readonly int UltimateB = Animator.StringToHash("Ultimate_b");
     private static readonly int UltimateDurationF = Animator.StringToHash("UltimateDuration_f");
     private static readonly int CrouchB = Animator.StringToHash("Crouch_b");
+    private static readonly int VulnerableB = Animator.StringToHash("Vulnerable_b");
 
     void Awake()
     {
@@ -176,7 +177,7 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        if (!Input.GetKey(KeyCode.DownArrow))
+        if (!Input.GetKey(KeyCode.DownArrow) && !_isGoingDownPipeAble)
         {
             float horizontalInput = Input.GetAxisRaw("Horizontal");
             Vector2 playerVelocity = _playerRb.velocity;
@@ -211,6 +212,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow) && _isAboveSpecialPipe)
         {
             _isGoingDownPipeAble = true;
+            _playerRb.velocity = Vector2.zero;
             StartCoroutine(StopGoingDownPipe());
         }
 
@@ -248,7 +250,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Pipe") ||
             other.gameObject.CompareTag("Brick") || other.gameObject.CompareTag("Stone") ||
             other.gameObject.CompareTag("SpecialPipe"))
@@ -467,6 +468,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator BeVulnerable()
     {
         yield return new WaitForSeconds(2);
+        _playerAnim.SetBool(VulnerableB, true);
         Physics2D.IgnoreLayerCollision(8, 9, false);
         isInvulnerable = false;
     }

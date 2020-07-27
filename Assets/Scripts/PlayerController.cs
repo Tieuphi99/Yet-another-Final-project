@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private bool _isFacingRight;
     private bool _isGoingDownPipeAble;
     private bool _isAboveSpecialPipe;
+    private bool _isFirePlayer;
     public bool isWalkingToCastle;
     public bool isInCastle;
     public bool isStopTime;
@@ -35,6 +36,8 @@ public class PlayerController : MonoBehaviour
     public GameObject smallPlayer;
     public GameObject smallPlayerCollider;
     public GameObject playerCol;
+    public GameObject fireBallPrefab;
+    public Transform fireBallParent;
     private Animator _playerAnim;
     private Rigidbody2D _playerRb;
     private AudioSource _playerAudio;
@@ -80,6 +83,14 @@ public class PlayerController : MonoBehaviour
         _isFinish = false;
         _isOnGround = true;
         isInCastle = false;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && _isFirePlayer)
+        {
+            Instantiate(fireBallPrefab, fireBallParent.position, fireBallParent.rotation);
+        }
     }
 
     private void FixedUpdate()
@@ -339,7 +350,7 @@ public class PlayerController : MonoBehaviour
             _isEatable)
         {
             _playerAudio.PlayOneShot(turnBigSound);
-            // TurnIntoFirePlayer();
+            TurnIntoFirePlayer();
             _isEatable = false;
         }
 
@@ -393,6 +404,11 @@ public class PlayerController : MonoBehaviour
 
         GameStatusController.IsBigPlayer = true;
         ChangeAnim();
+    }
+
+    private void TurnIntoFirePlayer()
+    {
+        _isFirePlayer = true;
     }
 
     private void Die()

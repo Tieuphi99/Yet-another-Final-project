@@ -3144,6 +3144,8 @@ MonoBehaviour:
   secondMessagePopup: {fileID: 6319275482537717536}
   scoreParent: {fileID: 5780120328752639260}
   pauseSound: {fileID: 8300000, guid: 5142fc99bed2a4bbebff130ef5be3e3b, type: 3}
+  stageClearSound: {fileID: 8300000, guid: e961139f9086349318d17156064bb835, type: 3}
+  pipeSound: {fileID: 8300000, guid: ceae4130f96724ca1b89b5c049a7d4b8, type: 3}
 --- !u!82 &7400216831877492348
 AudioSource:
   m_ObjectHideFlags: 0

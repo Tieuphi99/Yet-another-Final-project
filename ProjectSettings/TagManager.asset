@@ -34,6 +34,7 @@ TagManager:
   - Princess
   - Piranha
   - Fireball
+  - CastleStone
   layers:
   - Default
   - TransparentFX

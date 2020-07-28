@@ -362,7 +362,6 @@ MonoBehaviour:
   fireBallParent: {fileID: 1585264833500063697}
   jumpSound: {fileID: 8300000, guid: 94f1a34e8ca8649279942acad22f108b, type: 3}
   jumpBigSound: {fileID: 8300000, guid: 9f125e09913194dc991970e850fc89c6, type: 3}
-  stageClearSound: {fileID: 8300000, guid: e961139f9086349318d17156064bb835, type: 3}
   flagPoleSound: {fileID: 8300000, guid: 60807c213729b49f692a8e664a26eda0, type: 3}
   pipeSound: {fileID: 8300000, guid: ceae4130f96724ca1b89b5c049a7d4b8, type: 3}
   dieSound: {fileID: 8300000, guid: b95f4a2385c8e4b838ad7f8208f3f5e1, type: 3}
@@ -371,6 +370,7 @@ MonoBehaviour:
   coinSound: {fileID: 8300000, guid: f145a6a1bcf60439aa6a3c271d13f107, type: 3}
   kickSound: {fileID: 8300000, guid: 58d6b472f31ea4d5897287424bdb6e1e, type: 3}
   endGameSound: {fileID: 8300000, guid: 34e5b02d56319410d9a7067c0b82dfef, type: 3}
+  fireballSound: {fileID: 8300000, guid: e4d49c42462594f558fcb5a71b7203b8, type: 3}
 --- !u!95 &5562541293349834303
 Animator:
   serializedVersion: 3

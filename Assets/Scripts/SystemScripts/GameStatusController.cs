@@ -22,7 +22,9 @@ namespace SystemScripts
         public GameObject secondMessagePopup;
         public Transform scoreParent;
         private AudioSource _gameStatusAudio;
+
         public AudioClip pauseSound;
+        public AudioClip stageClearSound;
 
         private bool _pauseTrigger;
 
@@ -33,6 +35,7 @@ namespace SystemScripts
         public static int CurrentLevel;
         public static bool IsDead;
         public static bool IsGameOver;
+        public static bool IsStageClear;
         public static bool IsBigPlayer;
         public static bool IsFirePlayer;
         public static bool IsBossBattle;
@@ -52,11 +55,17 @@ namespace SystemScripts
 
         private void Update()
         {
+            if (IsStageClear)
+            {
+                _gameStatusAudio.PlayOneShot(stageClearSound);
+                IsStageClear = false;
+            }
+
             if (IsShowMessage)
             {
                 StartCoroutine(DisplayFirstMessage());
             }
-            
+
             if (IsEnemyDieOrCoinEat)
             {
                 IsEnemyDieOrCoinEat = false;

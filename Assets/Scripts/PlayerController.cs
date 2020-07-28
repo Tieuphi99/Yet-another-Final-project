@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("AudioClip Settings")] public AudioClip jumpSound;
     public AudioClip jumpBigSound;
-    public AudioClip stageClearSound;
     public AudioClip flagPoleSound;
     public AudioClip pipeSound;
     public AudioClip dieSound;
@@ -52,6 +51,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip coinSound;
     public AudioClip kickSound;
     public AudioClip endGameSound;
+    public AudioClip fireballSound;
 
     private static readonly int IdleB = Animator.StringToHash("Idle_b");
     private static readonly int WalkB = Animator.StringToHash("Walk_b");
@@ -89,9 +89,10 @@ public class PlayerController : MonoBehaviour
     {
         if (!isDead && !_isFinish && !GameStatusController.IsGameFinish)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && GameStatusController.IsFirePlayer)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 Instantiate(fireBallPrefab, fireBallParent.position, fireBallParent.rotation);
+                _playerAudio.PlayOneShot(fireballSound);
             }
 
             if (Input.GetKeyDown(KeyCode.A) && _isOnGround)
@@ -121,6 +122,8 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.DownArrow) && _isAboveSpecialPipe)
             {
+                _isAboveSpecialPipe = false;
+                _playerAudio.PlayOneShot(pipeSound);
                 _isGoingDownPipeAble = true;
                 _playerRb.velocity = Vector2.zero;
                 StartCoroutine(StopGoingDownPipe());
@@ -142,6 +145,21 @@ public class PlayerController : MonoBehaviour
                     transform.Rotate(0, 180, 0);
                     _isFacingRight = !_isFacingRight;
                 }
+            }
+
+            if (_isGoingDownPipeAble)
+            {
+                if (CompareTag("Player"))
+                {
+                    smallPlayerCollider.SetActive(false);
+                }
+                else if (CompareTag("BigPlayer"))
+                {
+                    bigPlayerCollider.SetActive(false);
+                }
+
+                _playerRb.isKinematic = true;
+                transform.Translate(slideDownSpeed / 2.5f * Time.deltaTime * Vector3.down);
             }
         }
     }
@@ -222,22 +240,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
-        if (_isGoingDownPipeAble)
-        {
-            _playerAudio.PlayOneShot(pipeSound);
-            if (CompareTag("Player"))
-            {
-                smallPlayerCollider.SetActive(false);
-            }
-            else if (CompareTag("BigPlayer"))
-            {
-                bigPlayerCollider.SetActive(false);
-            }
-
-            _playerRb.isKinematic = true;
-            transform.Translate(slideDownSpeed / 2.5f * Time.deltaTime * Vector3.down);
-        }
     }
 
     private void MovePlayer()
@@ -270,7 +272,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Pipe") ||
             other.gameObject.CompareTag("Brick") || other.gameObject.CompareTag("Stone") ||
-            other.gameObject.CompareTag("SpecialPipe"))
+            other.gameObject.CompareTag("SpecialPipe") || other.gameObject.CompareTag("CastleStone"))
         {
             _isOnGround = true;
             _playerAnim.SetBool(IdleB, true);
@@ -481,7 +483,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator PlayStageClearSound()
     {
         yield return new WaitForSeconds(1.5f);
-        _playerAudio.PlayOneShot(stageClearSound);
+        GameStatusController.IsStageClear = true;
     }
 
     private IEnumerator BeVulnerable()
@@ -504,7 +506,6 @@ public class PlayerController : MonoBehaviour
     private IEnumerator StopGoingDownPipe()
     {
         yield return new WaitForSeconds(1.5f);
-        _isAboveSpecialPipe = false;
         _isGoingDownPipeAble = false;
         SceneManager.LoadScene(GameStatusController.CurrentLevel);
         GameStatusController.CurrentLevel += 1;

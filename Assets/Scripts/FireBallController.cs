@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using SystemScripts;
 using UnityEngine;
 
 public class FireBallController : MonoBehaviour
@@ -20,18 +21,26 @@ public class FireBallController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        Vector3 relative = transform.InverseTransformPoint(other.transform.position);
+        float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
+        Debug.Log(angle);
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("CastleStone"))
         {
             _fireBallRb.AddForce(new Vector2(0, 180));
         }
-
-        if (!other.gameObject.CompareTag("Ground"))
+        else
         {
             _fireBallAnim.SetTrigger(DestroyT);
             StartCoroutine(Destroy());
         }
+
+        if (other.gameObject.CompareTag("Piranha"))
+        {
+            GameStatusController.IsEnemyDieOrCoinEat = true;
+            Destroy(other.gameObject);
+        }
     }
-    
+
     private IEnumerator Destroy()
     {
         yield return new WaitForSeconds(0.02f);

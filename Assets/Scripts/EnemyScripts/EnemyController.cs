@@ -73,7 +73,7 @@ namespace EnemyScripts
                 }
             }
 
-            if (other.gameObject.CompareTag("KoopaShell"))
+            if (other.gameObject.CompareTag("KoopaShell") || other.gameObject.CompareTag("Fireball"))
             {
                 GameStatusController.Score += 200;
                 GameStatusController.IsEnemyDieOrCoinEat = true;

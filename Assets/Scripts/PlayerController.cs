@@ -91,6 +91,69 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(fireBallPrefab, fireBallParent.position, fireBallParent.rotation);
         }
+
+        if (Input.GetKeyDown(KeyCode.A) && _isOnGround)
+        {
+            _playerAudio.PlayOneShot(GameStatusController.IsBigPlayer ? jumpSound : jumpBigSound);
+            _isOnGround = false;
+            _playerAnim.SetTrigger(JumpTrig);
+            _playerRb.AddForce(new Vector2(0f, jumpForce));
+            _playerAnim.SetBool(IdleB, false);
+            _playerAnim.SetBool(WalkB, false);
+            _playerAnim.SetBool(RunB, false);
+        }
+
+        DenyMidAirJump();
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            speed = 600;
+            jumpForce = 1160;
+        }
+        
+        else if (Input.GetKeyUp(KeyCode.S))
+        {
+            speed = 410;
+            jumpForce = 1030;
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow) && _isAboveSpecialPipe)
+        {
+            _isGoingDownPipeAble = true;
+            _playerRb.velocity = Vector2.zero;
+            StartCoroutine(StopGoingDownPipe());
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow) && (CompareTag("BigPlayer") || CompareTag("UltimateBigPlayer")) && !_isAboveSpecialPipe)
+        {
+            _playerAnim.SetBool(CrouchB, true);
+            smallPlayerCollider.SetActive(true);
+            bigPlayerCollider.SetActive(false);
+        }
+        else if (Input.GetKeyUp(KeyCode.DownArrow) && (CompareTag("BigPlayer") || CompareTag("UltimateBigPlayer")) && !_isAboveSpecialPipe)
+        {
+            _playerAnim.SetBool(CrouchB, false);
+            smallPlayerCollider.SetActive(false);
+            bigPlayerCollider.SetActive(true);
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.DownArrow))
+        {
+            if (!_isFacingRight)
+            {
+                transform.Rotate(0, 180, 0);
+                _isFacingRight = !_isFacingRight;
+            }
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.DownArrow))
+        {
+            if (_isFacingRight)
+            {
+                transform.Rotate(0, 180, 0);
+                _isFacingRight = !_isFacingRight;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -186,76 +249,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void MovePlayer()
+    private void MovePlayer()
     {
         if (!Input.GetKey(KeyCode.DownArrow) && !_isGoingDownPipeAble)
         {
-            float horizontalInput = Input.GetAxisRaw("Horizontal");
+            var horizontalInput = Input.GetAxisRaw("Horizontal");
             Vector2 playerVelocity = _playerRb.velocity;
             Vector3 targetVelocity = new Vector2(horizontalInput * speed * Time.fixedDeltaTime, playerVelocity.y);
             _playerRb.velocity = Vector3.SmoothDamp(playerVelocity, targetVelocity, ref _velocity, smoothTime);
-        }
-
-        DenyMidAirJump();
-
-        if (Input.GetKeyDown(KeyCode.A) && _isOnGround)
-        {
-            _playerAudio.PlayOneShot(GameStatusController.IsBigPlayer ? jumpSound : jumpBigSound);
-            _isOnGround = false;
-            _playerAnim.SetTrigger(JumpTrig);
-            _playerRb.AddForce(new Vector2(0f, jumpForce));
-            _playerAnim.SetBool(IdleB, false);
-            _playerAnim.SetBool(WalkB, false);
-            _playerAnim.SetBool(RunB, false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            speed = 600;
-            jumpForce = 1160;
-        }
-        else if (Input.GetKeyUp(KeyCode.S))
-        {
-            speed = 410;
-            jumpForce = 1030;
-        }
-
-        if (Input.GetKeyDown(KeyCode.DownArrow) && _isAboveSpecialPipe)
-        {
-            _isGoingDownPipeAble = true;
-            _playerRb.velocity = Vector2.zero;
-            StartCoroutine(StopGoingDownPipe());
-        }
-
-        if (Input.GetKey(KeyCode.DownArrow) && (CompareTag("BigPlayer") || CompareTag("UltimateBigPlayer")) && !_isAboveSpecialPipe)
-        {
-            _playerAnim.SetBool(CrouchB, true);
-            smallPlayerCollider.SetActive(true);
-            bigPlayerCollider.SetActive(false);
-        }
-        else if (Input.GetKeyUp(KeyCode.DownArrow) && (CompareTag("BigPlayer") || CompareTag("UltimateBigPlayer")) && !_isAboveSpecialPipe)
-        {
-            _playerAnim.SetBool(CrouchB, false);
-            smallPlayerCollider.SetActive(false);
-            bigPlayerCollider.SetActive(true);
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.DownArrow))
-        {
-            if (!_isFacingRight)
-            {
-                transform.Rotate(0, 180, 0);
-                _isFacingRight = !_isFacingRight;
-            }
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.DownArrow))
-        {
-            if (_isFacingRight)
-            {
-                transform.Rotate(0, 180, 0);
-                _isFacingRight = !_isFacingRight;
-            }
         }
     }
 

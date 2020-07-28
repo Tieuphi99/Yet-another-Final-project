@@ -34,6 +34,7 @@ namespace SystemScripts
         public static bool IsDead;
         public static bool IsGameOver;
         public static bool IsBigPlayer;
+        public static bool IsFirePlayer;
         public static bool IsBossBattle;
         public static bool IsGameFinish;
         public static bool IsEnemyDieOrCoinEat;

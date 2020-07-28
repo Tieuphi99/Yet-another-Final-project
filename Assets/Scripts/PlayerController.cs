@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
     private bool _isFacingRight;
     private bool _isGoingDownPipeAble;
     private bool _isAboveSpecialPipe;
-    private bool _isFirePlayer;
     public bool isWalkingToCastle;
     public bool isInCastle;
     public bool isStopTime;
@@ -66,6 +65,7 @@ public class PlayerController : MonoBehaviour
     private static readonly int UltimateDurationF = Animator.StringToHash("UltimateDuration_f");
     private static readonly int CrouchB = Animator.StringToHash("Crouch_b");
     private static readonly int VulnerableB = Animator.StringToHash("Vulnerable_b");
+    private static readonly int FireB = Animator.StringToHash("Fire_b");
 
     void Awake()
     {
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _isFirePlayer)
+        if (Input.GetKeyDown(KeyCode.Space) && GameStatusController.IsFirePlayer)
         {
             Instantiate(fireBallPrefab, fireBallParent.position, fireBallParent.rotation);
         }
@@ -199,6 +199,7 @@ public class PlayerController : MonoBehaviour
         else if (!isDead && !_isFinish && !GameStatusController.IsGameFinish)
         {
             _playerAnim.SetBool(BigB, GameStatusController.IsBigPlayer);
+            _playerAnim.SetBool(FireB, GameStatusController.IsFirePlayer);
             ChangeAnim();
             MovePlayer();
             GetPlayerSpeed();
@@ -301,6 +302,7 @@ public class PlayerController : MonoBehaviour
             _playerAudio.PlayOneShot(dieSound);
             GameStatusController.Live -= 1;
             GameStatusController.IsBigPlayer = false;
+            GameStatusController.IsFirePlayer = false;
             GameStatusController.PlayerTag = "Player";
             GameStatusController.IsDead = true;
             _playerRb.isKinematic = true;
@@ -351,7 +353,7 @@ public class PlayerController : MonoBehaviour
             _isEatable)
         {
             _playerAudio.PlayOneShot(turnBigSound);
-            TurnIntoFirePlayer();
+            GameStatusController.IsFirePlayer = true;
             _isEatable = false;
         }
 
@@ -405,11 +407,6 @@ public class PlayerController : MonoBehaviour
 
         GameStatusController.IsBigPlayer = true;
         ChangeAnim();
-    }
-
-    private void TurnIntoFirePlayer()
-    {
-        _isFirePlayer = true;
     }
 
     private void Die()

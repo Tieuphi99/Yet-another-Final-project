@@ -58,6 +58,7 @@ namespace EnemyScripts
             {
                 _enemyAudio.PlayOneShot(turnSmallPlayerSound);
                 GameStatusController.IsBigPlayer = false;
+                GameStatusController.IsFirePlayer = false;
                 GameStatusController.PlayerTag = "Player";
                 playerController.gameObject.tag = GameStatusController.PlayerTag;
                 playerController.ChangeAnim();

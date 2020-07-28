@@ -30,10 +30,7 @@ public class FireBallController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Vector3 relative = transform.InverseTransformPoint(other.transform.position);
-        float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
-        Debug.Log(angle);
-        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("CastleStone"))
+        if (other.gameObject.CompareTag("Ground"))
         {
             _fireBallRb.AddForce(new Vector2(0, 180));
         }

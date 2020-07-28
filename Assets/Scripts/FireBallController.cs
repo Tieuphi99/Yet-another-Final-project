@@ -19,6 +19,15 @@ public class FireBallController : MonoBehaviour
         _fireBallRb.velocity = transform.right * speed;
     }
 
+    private void Update()
+    {
+        if (Mathf.RoundToInt(_fireBallRb.velocity.x) == 0)
+        {
+            _fireBallAnim.SetTrigger(DestroyT);
+            StartCoroutine(Destroy());
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         Vector3 relative = transform.InverseTransformPoint(other.transform.position);

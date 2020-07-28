@@ -272,7 +272,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Pipe") ||
             other.gameObject.CompareTag("Brick") || other.gameObject.CompareTag("Stone") ||
-            other.gameObject.CompareTag("SpecialPipe") || other.gameObject.CompareTag("CastleStone"))
+            other.gameObject.CompareTag("SpecialPipe"))
         {
             _isOnGround = true;
             _playerAnim.SetBool(IdleB, true);

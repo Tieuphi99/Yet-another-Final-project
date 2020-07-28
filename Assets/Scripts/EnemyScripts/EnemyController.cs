@@ -58,9 +58,8 @@ namespace EnemyScripts
             if (CompareTag("KoopaShell"))
             {
                 if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Ground") &&
-                    !other.gameObject.CompareTag("CastleStone") && !other.gameObject.CompareTag("Brick") &&
-                    !other.gameObject.CompareTag("ScreenBorder") && !other.gameObject.CompareTag("Goomba") &&
-                    !other.gameObject.CompareTag("Koopa"))
+                    !other.gameObject.CompareTag("Brick") && !other.gameObject.CompareTag("ScreenBorder") &&
+                    !other.gameObject.CompareTag("Goomba") && !other.gameObject.CompareTag("Koopa"))
                 {
                     transform.Rotate(0, 180, 0);
                 }

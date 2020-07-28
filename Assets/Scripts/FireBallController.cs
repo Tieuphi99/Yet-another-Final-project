@@ -19,20 +19,16 @@ public class FireBallController : MonoBehaviour
         _fireBallRb.velocity = transform.right * speed;
     }
 
-    private void Update()
-    {
-        if (Mathf.RoundToInt(_fireBallRb.velocity.x) == 0)
-        {
-            _fireBallAnim.SetTrigger(DestroyT);
-            StartCoroutine(Destroy());
-        }
-    }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Stone"))
         {
             _fireBallRb.AddForce(new Vector2(0, 180));
+            if (Mathf.RoundToInt(_fireBallRb.velocity.x) == 0)
+            {
+                _fireBallAnim.SetTrigger(DestroyT);
+                StartCoroutine(Destroy());
+            }
         }
         else
         {

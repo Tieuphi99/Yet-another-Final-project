@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using EnemyScripts;
+using PlayerScripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -147,16 +148,15 @@ namespace SystemScripts
                     if (enemyControllers[i] != null)
                     {
                         if (Mathf.RoundToInt(enemyControllers[i].gameObject.transform.position.x -
-                                             player.transform.position.x) == 0 &&
-                            enemyControllers[i].gameObject.transform.position.y - player.transform.position.y <
-                            0.2f &&
-                            enemyControllers[i].gameObject.transform.position.y - player.transform.position.y >
-                            -0.2f)
+                                             player.transform.position.x) == 0 && player.CompareTag("UltimatePlayer"))
                         {
-                            GameStatusController.Score += 200;
-                            GameStatusController.IsEnemyDieOrCoinEat = true;
-                            enemyControllers[i].Die();
-                            enemyControllers.Remove(enemyControllers[i]);
+                            KillAndRemoveEnemies(i, 0.2f);
+                        }
+                        else if (Mathf.RoundToInt(enemyControllers[i].gameObject.transform.position.x -
+                                                  player.transform.position.x) == 0 &&
+                                 player.CompareTag("UltimateBigPlayer"))
+                        {
+                            KillAndRemoveEnemies(i, 0.7f);
                         }
                     }
                     else
@@ -164,6 +164,20 @@ namespace SystemScripts
                         enemyControllers.Remove(enemyControllers[i]);
                     }
                 }
+            }
+        }
+
+        private void KillAndRemoveEnemies(int i, float distance)
+        {
+            if (enemyControllers[i].gameObject.transform.position.y - player.transform.position.y <
+                distance &&
+                enemyControllers[i].gameObject.transform.position.y - player.transform.position.y >
+                -distance)
+            {
+                GameStatusController.Score += 200;
+                GameStatusController.IsEnemyDieOrCoinEat = true;
+                enemyControllers[i].Die();
+                enemyControllers.Remove(enemyControllers[i]);
             }
         }
 

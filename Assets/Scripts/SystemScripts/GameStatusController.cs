@@ -211,6 +211,7 @@ namespace SystemScripts
         public void ExitGame()
         {
             SceneManager.LoadScene(0);
+            Time.timeScale = 1;
         }
 
         private void UpdateScorePopup(GameObject scorePrefab)

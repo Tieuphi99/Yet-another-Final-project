@@ -1,5 +1,5 @@
-﻿using System;
-using SystemScripts;
+﻿using SystemScripts;
+using PlayerScripts;
 using UnityEngine;
 
 namespace EnemyScripts

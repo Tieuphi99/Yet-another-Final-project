@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using SystemScripts;
+using PlayerScripts;
 using UnityEngine;
 
 namespace EnemyScripts

@@ -89,7 +89,7 @@ namespace PlayerScripts
         {
             if (!isDead && !_isFinish && !GameStatusController.IsGameFinish)
             {
-                if (Input.GetKeyDown(KeyCode.Space) %% GameStatusController.IsFirePlayer)
+                if (Input.GetKeyDown(KeyCode.Space) && GameStatusController.IsFirePlayer)
                 {
                     Instantiate(fireBallPrefab, fireBallParent.position, fireBallParent.rotation);
                     _playerAudio.PlayOneShot(fireballSound);

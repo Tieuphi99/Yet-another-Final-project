@@ -7,6 +7,7 @@ namespace PlayerScripts
 {
     public class PlayerController : MonoBehaviour
     {
+        
         public float speed = 410f;
         public float slideDownSpeed = 410f;
         public float jumpForce = 795f;

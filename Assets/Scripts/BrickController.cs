@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BrickController : MonoBehaviour
 {
+    
     public bool isTouchByPlayer;
     public bool isSpecialBrick;
     public int specialBrickHealth;
